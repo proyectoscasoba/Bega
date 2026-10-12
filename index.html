@@ -23,7 +23,6 @@
         --topbar-bg: rgba(251, 250, 246, 0.95);
       }
 
-      /* TEMA NOCTURNO / MODO OSCURO */
       body.dark-theme {
         --ink: #e2ece9;
         --ink-soft: #a1b8b2;
@@ -66,7 +65,6 @@
         overflow: hidden;
       }
 
-      /* PORTADA MEJORADA VISUALMENTE */
       .cover {
         min-height: 100vh;
         display: grid;
@@ -123,7 +121,6 @@
         font-size: clamp(3.2rem, 9vw, 7.5rem);
         font-weight: 400;
         line-height: 0.94;
-        letter-spacing: 0;
       }
       .cover-copy {
         max-width: 540px;
@@ -139,7 +136,6 @@
         margin-bottom: 24px;
       }
 
-      /* BANNER CONTINUAR REPRODUCCIÓN */
       .resume-banner {
         display: flex;
         align-items: center;
@@ -180,9 +176,6 @@
           bold 0.8rem Arial,
           sans-serif;
         white-space: nowrap;
-      }
-      .resume-btn:hover {
-        background: #e2a45e;
       }
 
       .release-notice {
@@ -241,27 +234,17 @@
         color: #c4d5cd;
         font-size: 0.74rem;
       }
-      .release-notice strong {
-        display: block;
-        margin-bottom: 3px;
-        color: #f0cc91;
-        font-size: 0.94rem;
-      }
       .release-dismiss {
         align-self: flex-end;
-        min-height: 36px;
         padding: 6px 10px;
         border: 1px solid rgba(220, 232, 223, 0.5);
-        border-radius: 2px;
         background: transparent;
         color: #fbfaf6;
         font:
           0.76rem Arial,
           sans-serif;
       }
-      .release-dismiss:hover {
-        background: rgba(251, 250, 246, 0.12);
-      }
+
       .primary-button,
       .secondary-button {
         border: 0;
@@ -269,26 +252,17 @@
         padding: 14px 20px;
         transition:
           transform 180ms ease,
-          background 180ms ease,
-          color 180ms ease;
+          background 180ms ease;
       }
       .primary-button {
         background: var(--saffron);
         color: #1b302d;
         font-weight: 700;
       }
-      .primary-button:hover {
-        background: #e2a45e;
-        transform: translateY(-2px);
-      }
       .secondary-button {
         background: rgba(251, 250, 246, 0.15);
         color: #fbfaf6;
         border: 1px solid rgba(251, 250, 246, 0.4);
-      }
-      .secondary-button:hover {
-        background: rgba(251, 250, 246, 0.28);
-        transform: translateY(-2px);
       }
       .cover-note {
         margin: 12px 0 0;
@@ -298,7 +272,6 @@
           sans-serif;
       }
 
-      /* PREPARACIÓN Y BIBLIOTECA */
       .preparation,
       .library {
         min-height: 100vh;
@@ -334,12 +307,6 @@
         font:
           0.8rem Arial,
           sans-serif;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .theme-toggle-btn:hover {
-        border-color: var(--saffron);
       }
       .brand {
         color: var(--ink);
@@ -351,9 +318,7 @@
         border: 0;
         background: transparent;
         color: var(--ink-soft);
-        padding: 8px 0;
         text-decoration: underline;
-        text-underline-offset: 4px;
       }
 
       .preparation-main {
@@ -372,13 +337,8 @@
         gap: 24px;
       }
       .photo-slot {
-        min-width: 0;
         margin: 0;
         cursor: pointer;
-        transition: transform 200ms ease;
-      }
-      .photo-slot:hover {
-        transform: translateY(-4px);
       }
       .photo-slot-left {
         grid-area: left;
@@ -415,15 +375,6 @@
         background: #31534c;
         object-fit: contain;
         border-radius: 4px;
-        box-shadow: 0 4px 12px rgba(24, 59, 58, 0.1);
-      }
-      .photo-source {
-        display: block;
-        margin-top: 5px;
-        font-size: 0.7rem;
-      }
-      .photo-source a {
-        color: var(--ink-soft);
       }
 
       .preparation-header {
@@ -434,14 +385,6 @@
         margin: 0 0 14px;
         font-size: clamp(2.4rem, 6vw, 4.6rem);
         font-weight: 400;
-        line-height: 1;
-      }
-      .preparation-header > p:last-child {
-        max-width: 620px;
-        margin: 0;
-        color: var(--ink-soft);
-        font-size: 1.05rem;
-        line-height: 1.6;
       }
       .preparation-content {
         max-width: 820px;
@@ -462,23 +405,12 @@
           0.78rem Arial,
           sans-serif;
       }
-      .information-item h3 {
-        margin: 0 0 9px;
-        font-size: 1.55rem;
-        font-weight: 400;
-      }
-      .information-item p:last-child {
-        margin: 0;
-        color: var(--ink-soft);
-        line-height: 1.65;
-      }
       .enter-audios {
         display: flex;
         justify-content: center;
         padding: 38px 0 0;
       }
 
-      /* MODAL */
       .modal-backdrop {
         position: fixed;
         inset: 0;
@@ -495,28 +427,11 @@
         width: 100%;
         border-radius: 6px;
         padding: 32px;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
         border: 1px solid var(--line);
         position: relative;
         max-height: 85vh;
         overflow-y: auto;
         color: var(--ink);
-      }
-      .modal-box h3 {
-        margin: 0 0 6px;
-        font-size: 1.8rem;
-      }
-      .modal-box .modal-subtitle {
-        color: var(--saffron-dark);
-        font-style: italic;
-        margin-bottom: 18px;
-        display: block;
-      }
-      .modal-box p {
-        color: var(--ink-soft);
-        line-height: 1.65;
-        margin-bottom: 14px;
-        font-size: 1rem;
       }
       .modal-close-btn {
         position: absolute;
@@ -526,15 +441,8 @@
         background: transparent;
         font-size: 1.5rem;
         color: var(--ink-soft);
-        padding: 4px 10px;
-        border-radius: 4px;
-      }
-      .modal-close-btn:hover {
-        background: rgba(0, 0, 0, 0.05);
-        color: var(--ink);
       }
 
-      /* BIBLIOTECA Y TARJETAS */
       .library-header {
         max-width: 1180px;
         margin: auto;
@@ -545,14 +453,6 @@
         margin: 0 0 14px;
         font-size: clamp(2.2rem, 5vw, 4.2rem);
         font-weight: 400;
-        line-height: 0.98;
-      }
-      .library-header p {
-        max-width: 620px;
-        margin: 0 0 18px;
-        color: var(--ink-soft);
-        font-size: 1.05rem;
-        line-height: 1.6;
       }
       .filter-toolbar {
         display: flex;
@@ -575,9 +475,7 @@
         padding: 8px 16px;
         border-radius: 20px;
         font-size: 0.88rem;
-        transition: all 180ms ease;
       }
-      .filter-btn:hover,
       .filter-btn.active {
         background: var(--ink);
         color: var(--paper-light);
@@ -601,15 +499,6 @@
         border: 1px solid var(--line);
         background: var(--card-bg);
         border-radius: 4px;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-        position: relative;
-        transition:
-          transform 180ms ease,
-          box-shadow 180ms ease;
-      }
-      .practice-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
       }
       .card-top {
         display: flex;
@@ -622,14 +511,7 @@
         background: transparent;
         font-size: 1.3rem;
         color: #b8c4c1;
-        padding: 0;
-        line-height: 1;
-        transition:
-          color 180ms ease,
-          transform 180ms ease;
-      }
-      .fav-btn:hover {
-        transform: scale(1.15);
+        cursor: pointer;
       }
       .fav-btn.is-fav {
         color: var(--saffron);
@@ -638,12 +520,10 @@
         margin: 8px 0 10px;
         font-size: 1.6rem;
         font-weight: 400;
-        line-height: 1.15;
       }
       .practice-card p {
         margin: 0;
         color: var(--ink-soft);
-        line-height: 1.5;
         font-size: 0.95rem;
       }
       .practice-card .practice-credit {
@@ -653,42 +533,16 @@
         font-style: italic;
       }
 
-      .card-badges {
+      .card-actions {
         display: flex;
         align-items: center;
-        gap: 8px;
-        margin-top: 10px;
-      }
-      .offline-badge {
-        font:
-          bold 0.68rem/1 Arial,
-          sans-serif;
-        color: #2e7d32;
-        background: #e8f5e9;
-        border: 1px solid #c8e6c9;
-        padding: 3px 7px;
-        border-radius: 10px;
-      }
-      body.dark-theme .offline-badge {
-        background: rgba(46, 125, 50, 0.2);
-        color: #81c784;
-        border-color: rgba(46, 125, 50, 0.4);
-      }
-
-      .card-actions {
-        display: flex !important;
-        align-items: center !important;
-        gap: 12px !important;
-        margin-top: 22px !important;
-        visibility: visible !important;
-        opacity: 1 !important;
+        gap: 12px;
+        margin-top: 22px;
       }
       .listen-button {
-        display: inline-flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
         flex: 1;
         min-height: 42px;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
         border: 0;
@@ -696,12 +550,8 @@
         padding: 10px;
         background: var(--ink);
         color: var(--paper-light);
-        touch-action: manipulation;
         font-weight: 700;
         font-size: 0.92rem;
-      }
-      .listen-button:hover {
-        opacity: 0.9;
       }
       .download-button {
         width: 42px;
@@ -715,12 +565,7 @@
         text-decoration: none;
         line-height: 40px;
       }
-      .download-button:hover {
-        border-color: var(--saffron);
-        color: var(--saffron-dark);
-      }
 
-      /* REPRODUCTOR FLOTANTE CON CONTROL DE VELOCIDAD */
       .player-view {
         position: fixed;
         inset: auto 0 0;
@@ -738,9 +583,6 @@
         gap: 16px;
         max-width: 1180px;
         margin: auto;
-      }
-      .player-label {
-        min-width: 0;
       }
       .player-label strong,
       .player-label span {
@@ -771,13 +613,6 @@
         background: rgba(255, 255, 255, 0.08);
         padding: 4px 8px;
         border-radius: 4px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-      }
-      .speed-control label {
-        font:
-          0.72rem Arial,
-          sans-serif;
-        color: #b8d0c9;
       }
       .speed-select {
         background: transparent;
@@ -787,7 +622,6 @@
           0.82rem Arial,
           sans-serif;
         cursor: pointer;
-        padding: 2px 0;
       }
       .speed-select option {
         background: #183b3a;
@@ -795,14 +629,9 @@
       }
       .close-player {
         border: 1px solid #789893;
-        border-radius: 2px;
         background: transparent;
         color: #fff;
         padding: 8px 12px;
-        font-size: 0.85rem;
-      }
-      .close-player:hover {
-        background: #285f5b;
       }
 
       .back-to-top {
@@ -817,15 +646,6 @@
         background: var(--paper-light);
         color: var(--ink);
         font-size: 1.4rem;
-        line-height: 1;
-        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
-        transition:
-          transform 180ms ease,
-          background 180ms ease;
-      }
-      .back-to-top:hover {
-        background: var(--saffron);
-        transform: translateY(-3px);
       }
       footer {
         padding: 28px 24px 120px;
@@ -837,51 +657,6 @@
       }
 
       @media (max-width: 768px) {
-        .cover {
-          justify-items: start;
-        }
-        .cover h1 {
-          font-size: clamp(3.1rem, 16vw, 5.3rem);
-        }
-        .topbar,
-        .library-header,
-        .practice-grid {
-          padding-left: 16px;
-          padding-right: 16px;
-        }
-        .preparation-main {
-          padding-right: 16px;
-          padding-left: 16px;
-        }
-        .photo-grid {
-          grid-template-areas: "left center right";
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          align-items: start;
-          gap: 8px;
-        }
-        .photo-slot-center .christ-image {
-          width: min(100%, 180px);
-          margin: auto;
-        }
-        .photo-slot figcaption {
-          font-size: 0.62rem;
-          line-height: 1.25;
-          padding-top: 6px;
-        }
-        .photo-source {
-          margin-top: 3px;
-          font-size: 0.58rem;
-        }
-        .preparation-header {
-          margin-top: 38px;
-        }
-        .preparation-content {
-          padding: 0 16px;
-        }
-        .information-item {
-          grid-template-columns: 34px minmax(0, 1fr);
-          gap: 8px;
-        }
         .player-inner {
           grid-template-columns: 1fr auto;
           gap: 10px 12px;
@@ -897,22 +672,17 @@
         .close-player {
           display: none;
         }
-        .back-to-top {
-          right: 16px;
-          bottom: 142px;
-        }
       }
     </style>
   </head>
   <body>
     <main class="shell">
-      <!-- PORTADA PRINCIPAL -->
       <section id="cover" class="cover" aria-labelledby="cover-title">
         <div class="cover-inner">
           <img
             class="cover-logo"
             src="images/logos.jfif"
-            alt="Emblema de la Iglesia Gnóstica Cristiana Universal Samael Aun Weor"
+            alt="Emblema"
             width="88"
             height="88"
           />
@@ -920,11 +690,9 @@
           <h1 id="cover-title">Biblioteca<br />Esotérica<br />Gnóstica</h1>
           <p class="cover-copy">
             Audios orientados para la interiorización, la integración y la
-            meditación. Entra cuando quieras; cada audio está abierto para que
-            sigas tu propio ritmo.
+            meditación.
           </p>
 
-          <!-- BANNER CONTINUAR REPRODUCCIÓN (ÚLTIMO AUDIO) -->
           <div id="resume-banner" class="resume-banner hidden">
             <div class="resume-info">
               <span>Continuar escuchando:</span>
@@ -935,30 +703,21 @@
             </button>
           </div>
 
-          <!-- AVISO DE NUEVAS ACTUALIZACIONES -->
-          <aside
-            id="release-notice"
-            class="release-notice hidden"
-            aria-label="Nuevas actualizaciones"
-            aria-live="polite"
-          >
-            <p>
-              <strong>Nuevas Actualizaciones:</strong>
-            </p>
+          <aside id="release-notice" class="release-notice hidden">
+            <p><strong>Nuevas Actualizaciones:</strong></p>
             <div id="release-updates" class="release-updates"></div>
             <button id="release-dismiss" class="release-dismiss" type="button">
               Entendido
             </button>
           </aside>
 
-          <!-- BOTONES DE NAVEGACIÓN PORTADA -->
           <div class="cover-actions">
             <button
               id="direct-audio-button"
               class="primary-button"
               type="button"
             >
-              Ir a los Audios <span aria-hidden="true">→</span>
+              Ir a los Audios →
             </button>
             <button
               id="before-start-button"
@@ -969,26 +728,17 @@
             </button>
           </div>
 
-          <p id="offline-status" class="cover-note" aria-live="polite">
+          <p id="offline-status" class="cover-note">
             Preparando los audios para escuchar sin conexión.
           </p>
         </div>
       </section>
 
-      <!-- SECCIÓN ANTES DE COMENZAR -->
-      <section
-        id="preparation"
-        class="preparation hidden"
-        aria-labelledby="preparation-title"
-      >
-        <nav class="topbar" aria-label="Navegación de información previa">
-          <a class="brand" href="#cover" id="preparation-brand">PEG</a>
+      <section id="preparation" class="preparation hidden">
+        <nav class="topbar">
+          <a class="brand" href="#cover">PEG</a>
           <div class="topbar-right">
-            <button
-              class="theme-toggle-btn"
-              type="button"
-              aria-label="Cambiar tema"
-            >
+            <button class="theme-toggle-btn" type="button">
               <span class="theme-icon">🌙</span>
               <span class="theme-text">Modo Noche</span>
             </button>
@@ -1002,58 +752,45 @@
           </div>
         </nav>
         <main class="preparation-main">
-          <div class="photo-grid" aria-label="Fotografías de presentación">
+          <div class="photo-grid">
             <figure class="photo-slot photo-slot-left" data-teacher="lakhsmi">
               <img
                 class="christ-image"
                 src="images/V. M. Lakhsmi Daimon.jpeg"
-                alt="Retrato de Venerable Maestro Lakhsmi Daimon"
+                alt="V.M. Lakhsmi Daimon"
               />
               <figcaption>
-                V.M. Lakhsmi Daimon
-                <span class="photo-badge">Ver Reseña</span>
+                V.M. Lakhsmi Daimon <span class="photo-badge">Ver Reseña</span>
               </figcaption>
             </figure>
             <figure class="photo-slot photo-slot-center" data-teacher="cristo">
               <img
                 class="christ-image"
                 src="images/cristo-pantocrator-sinai.jpg"
-                alt="Icono de Jesús el Cristo Pantocrátor con la mano derecha levantada en gesto de bendición"
+                alt="Jesús el Cristo"
               />
               <figcaption>
-                Jesús el Cristo
-                <span class="photo-badge">Ver Reseña</span>
-                <span class="photo-source">
-                  <a
-                    href="https://commons.wikimedia.org/wiki/File:Spas_vsederzhitel_sinay.jpg"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Wikimedia Commons · dominio público
-                  </a>
-                </span>
+                Jesús el Cristo <span class="photo-badge">Ver Reseña</span>
               </figcaption>
             </figure>
             <figure class="photo-slot photo-slot-right" data-teacher="samael">
               <img
                 class="christ-image"
                 src="images/V. M. Samael Aun Weor.jpg"
-                alt="Retrato de Venerable Maestro Samael Aun Weor"
+                alt="V.M. Samael Aun Weor"
               />
               <figcaption>
-                V.M. Samael Aun Weor
-                <span class="photo-badge">Ver Reseña</span>
+                V.M. Samael Aun Weor <span class="photo-badge">Ver Reseña</span>
               </figcaption>
             </figure>
           </div>
 
           <header class="preparation-header">
             <p class="eyebrow">Orientación para el visitante</p>
-            <h2 id="preparation-title">Antes de comenzar</h2>
+            <h2>Antes de comenzar</h2>
             <p>
               Información importante para acompañar tu recorrido por las
-              prácticas. Haz clic en las imágenes superiores para conocer la
-              reseña histórica de cada Maestro.
+              prácticas.
             </p>
           </header>
 
@@ -1061,15 +798,10 @@
             <article class="information-item">
               <p class="information-number">01</p>
               <div>
-                <h3>
-                  ¿Para quién está pensada esta biblioteca esotérica gnóstica?
-                </h3>
+                <h3>¿Para quién está pensada esta biblioteca?</h3>
                 <p>
                   Para todo inquieto buscador, amante de la verdad y de los
-                  misterios ocultos, no solo en los confines del inalterable e
-                  infinito universo exterior, sino también en la búsqueda
-                  interior de las profundidades de sí mismo, a través de la
-                  milenaria ciencia de la meditación interior profunda.
+                  misterios ocultos.
                 </p>
               </div>
             </article>
@@ -1078,58 +810,8 @@
               <div>
                 <h3>¿Qué tipo de prácticas encontrarás?</h3>
                 <p>
-                  Los audios son variados. La gran mayoría corresponde a
-                  fragmentos de convivencias en las que los Venerables Maestros
-                  Samael Aun Weor y Lakhsmi Daimon compartieron sus enseñanzas.
-                  En ellos hay momentos de integración, reflexión, oración y
-                  meditación que invitan al buscador a internarse en sí mismo y
-                  buscar su propio Ser Interior.
-                </p>
-                <p>
-                  También encontrarás audios y ejercicios específicos
-                  compartidos por otros hermanos durante convivencias
-                  especiales. Cada audio lleva un nombre basado en el tema
-                  principal tratado.
-                </p>
-              </div>
-            </article>
-            <article class="information-item">
-              <p class="information-number">03</p>
-              <div>
-                <h3>Nota importante</h3>
-                <p>
-                  Esta aplicación y su biblioteca no buscan competir con ninguna
-                  página oficial de la Santa Iglesia Gnóstica Cristiana
-                  Universal Samael Aun Weor Federada, ni con otros espacios de
-                  difusión de la Doctrina Gnóstica. El contenido aquí planteado
-                  es para toda la humanidad.
-                </p>
-              </div>
-            </article>
-            <article class="information-item">
-              <p class="information-number">04</p>
-              <div>
-                <h3>Uso de la aplicación</h3>
-                <p>
-                  Puedes descargar la aplicación en tu móvil y usarla sin
-                  conexión a internet después de preparar la biblioteca. También
-                  puedes descargar los audios. La reproducción continúa con el
-                  siguiente audio; puedes pausarla, cerrarla o elegir otro de la
-                  lista. Se recomienda escucharlos en secuencia lógica.
-                </p>
-              </div>
-            </article>
-            <article class="information-item">
-              <p class="information-number">05</p>
-              <div>
-                <h3>Contacto</h3>
-                <p>
-                  Para comunicarte con el responsable, aportar un audio o
-                  compartir una práctica que contribuya a este proyecto, puedes
-                  escribir a
-                  <a href="mailto:carlosasosab@gmail.com"
-                    >carlosasosab@gmail.com</a
-                  >.
+                  Fragmentos de convivencias y ejercicios compartidos por los
+                  Maestros.
                 </p>
               </div>
             </article>
@@ -1141,26 +823,17 @@
               class="primary-button"
               type="button"
             >
-              Entrar a los Audios <span aria-hidden="true">→</span>
+              Entrar a los Audios →
             </button>
           </div>
         </main>
       </section>
 
-      <!-- BIBLIOTECA DE AUDIOS -->
-      <section
-        id="library"
-        class="library hidden"
-        aria-labelledby="library-title"
-      >
-        <nav class="topbar" aria-label="Navegación principal">
+      <section id="library" class="library hidden">
+        <nav class="topbar">
           <a class="brand" href="#cover">PEG</a>
           <div class="topbar-right">
-            <button
-              class="theme-toggle-btn"
-              type="button"
-              aria-label="Cambiar tema"
-            >
+            <button class="theme-toggle-btn" type="button">
               <span class="theme-icon">🌙</span>
               <span class="theme-text">Modo Noche</span>
             </button>
@@ -1171,10 +844,7 @@
         </nav>
         <header class="library-header">
           <p class="eyebrow">Biblioteca Gnóstica</p>
-          <h2 id="library-title">Elige un audio y permanece presente.</h2>
-          <p>Filtra por autor o guarda tus audios preferidos en favoritos.</p>
-
-          <!-- FILTROS POR AUTOR Y FAVORITOS -->
+          <h2>Elige un audio y permanece presente.</h2>
           <div class="filter-toolbar">
             <div class="author-filters">
               <button class="filter-btn active" data-author="all">Todos</button>
@@ -1190,28 +860,21 @@
           </div>
         </header>
 
-        <div id="practice-grid" class="practice-grid" aria-live="polite"></div>
+        <div id="practice-grid" class="practice-grid"></div>
         <footer>
           Los audios se guardan en este dispositivo para acompañarte también sin
           conexión.
         </footer>
       </section>
 
-      <!-- REPRODUCTOR FLOTANTE CON CONTROL DE VELOCIDAD -->
-      <aside
-        id="player-view"
-        class="player-view hidden"
-        aria-label="Reproductor de práctica"
-      >
+      <aside id="player-view" class="player-view hidden">
         <div class="player-inner">
           <div class="player-label">
             <strong id="player-title">Práctica</strong>
             <span id="player-status">Lista para comenzar</span>
           </div>
           <audio id="audio-player" controls preload="metadata"></audio>
-
-          <div class="speed-control" title="Velocidad de reproducción">
-            <label for="speed-select">Velocidad:</label>
+          <div class="speed-control">
             <select id="speed-select" class="speed-select">
               <option value="0.8">0.8x</option>
               <option value="1.0" selected>1.0x</option>
@@ -1219,115 +882,108 @@
               <option value="1.5">1.5x</option>
             </select>
           </div>
-
           <button id="close-player" class="close-player" type="button">
             Cerrar
           </button>
         </div>
       </aside>
 
-      <!-- MODAL BIOGRAFÍA MAESTROS -->
-      <div id="teacher-modal" class="modal-backdrop hidden" aria-hidden="true">
+      <div id="teacher-modal" class="modal-backdrop hidden">
         <div class="modal-box">
           <button id="modal-close" class="modal-close-btn" type="button">
             ✕
           </button>
-          <h3 id="modal-title">Nombre Maestro</h3>
-          <span id="modal-subtitle" class="modal-subtitle">Subtítulo</span>
+          <h3 id="modal-title"></h3>
+          <span id="modal-subtitle"></span>
           <div id="modal-body"></div>
         </div>
       </div>
 
-      <button
-        id="back-to-top"
-        class="back-to-top hidden"
-        type="button"
-        aria-label="Volver arriba"
-        title="Volver arriba"
-      >
+      <button id="back-to-top" class="back-to-top hidden" type="button">
         ↑
       </button>
     </main>
 
     <script>
+      // MATRIZ DE AUDIOS CON RUTAS Y EXTENSIONES CORREGIDAS
       const practices = [
         {
           title: "Asistencia de la Mónada Divina",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Asistencia de la Monada Divina.MP3",
-          download: "Asistencia de la Monada Divina.MP3",
+          file: "audio/Asistencia de la Monada Divina.mp3",
+          download: "Asistencia de la Monada Divina.mp3",
         },
         {
           title: "Cambio de Pareja",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Cambio de Pareja.MP3",
-          download: "Cambio de Pareja.MP3",
+          file: "audio/Cambio de Pareja.mp3",
+          download: "Cambio de Pareja.mp3",
         },
         {
           title: "Culto a la Madre",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Culto a la Madre.MP3",
-          download: "Culto a la Madre.MP3",
+          file: "audio/Culto a la Madre.mp3",
+          download: "Culto a la Madre.mp3",
         },
         {
           title: "El Divino Daimon y el Ego",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/El Divino Daimon y el Ego.MP3",
-          download: "El Divino Daimon y el Ego.MP3",
+          file: "audio/El Divino Daimon y el Ego.mp3",
+          download: "El Divino Daimon y el Ego.mp3",
         },
         {
           title: "El Estado Emocional y el Yo",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/El Estado Emocional y el Yo.MP3",
-          download: "El Estado Emocional y el Yo.MP3",
+          file: "audio/El Estado Emocional y el Yo.mp3",
+          download: "El Estado Emocional y el Yo.mp3",
         },
         {
           title: "El Negocio Piramidal",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/El Negocio Piramidal.MP3",
-          download: "El Negocio Piramidal.MP3",
+          file: "audio/El Negocio Piramidal.mp3",
+          download: "El Negocio Piramidal.mp3",
         },
         {
           title: "El Quinto Elemento",
           credit: "V.M. Samael Aun Weor.",
-          file: "audio/El Quinto Elemento.MP3",
-          download: "El Quinto Elemento.MP3",
+          file: "audio/El Quinto Elemento.mp3",
+          download: "El Quinto Elemento.mp3",
         },
         {
           title: "El Valor Exacto del Silencio",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/El Valor Exacto del Silencio.MP3",
-          download: "El Valor Exacto del Silencio.MP3",
+          file: "audio/El Valor Exacto del Silencio.mp3",
+          download: "El Valor Exacto del Silencio.mp3",
         },
         {
           title: "Huésped en el Corazón de Dios",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Huesped en el Corazon de Dios.MP3",
-          download: "Huesped en el Corazon de Dios.MP3",
+          file: "audio/Huesped en el Corazon de Dios.mp3",
+          download: "Huesped en el Corazon de Dios.mp3",
         },
         {
           title: "Inspiración Individual",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Inspiracion Individual.MP3",
-          download: "Inspiracion Individual.MP3",
+          file: "audio/Inspiracion Individual.mp3",
+          download: "Inspiracion Individual.mp3",
         },
         {
           title: "Integración con Dios",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Integracion con Dios.MP3",
-          download: "Integracion con Dios.MP3",
+          file: "audio/Integracion con Dios.mp3",
+          download: "Integracion con Dios.mp3",
         },
         {
           title: "Integración Natural",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Integracion Natural.MP3",
-          download: "Integracion Natural.MP3",
+          file: "audio/Integracion Natural.mp3",
+          download: "Integracion Natural.mp3",
         },
         {
           title: "La Comprensión del Yo Psí",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/La Comprension del YO Psi.MP3",
-          download: "La Comprension del YO Psi.MP3",
+          file: "audio/La Comprension del YO Psi.mp3",
+          download: "La Comprension del YO Psi.mp3",
         },
         {
           title: "La Cultura Gnóstica de Eleuterio Martínez",
@@ -1344,26 +1000,26 @@
         {
           title: "La Recurrencia",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/La Recurrencia.MP3",
-          download: "La Recurrencia.MP3",
+          file: "audio/La Recurrencia.mp3",
+          download: "La Recurrencia.mp3",
         },
         {
           title: "Las Peores Adversidades",
           credit: "V. M. Samael Aun Weor.",
-          file: "audio/Las Peores Adversidades.MP3",
-          download: "Las Peores Adversidades.MP3",
+          file: "audio/Las Peores Adversidades.mp3",
+          download: "Las Peores Adversidades.mp3",
         },
         {
           title: "Los Extraterrestres",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Los Extraterrestres.MP3",
-          download: "Los Extraterrestres.MP3",
+          file: "audio/Los Extraterrestres.mp3",
+          download: "Los Extraterrestres.mp3",
         },
         {
           title: "Lucifer-Moisés",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Lucifer-Moises.MP3",
-          download: "Lucifer-Moises.MP3",
+          file: "audio/Lucifer-Moises.mp3",
+          download: "Lucifer-Moises.mp3",
         },
         {
           title: "Mantram Belilin",
@@ -1374,62 +1030,62 @@
         {
           title: "Matrimonios",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Matrimonios.MP3",
-          download: "Matrimonios.MP3",
+          file: "audio/Matrimonios.mp3",
+          download: "Matrimonios.mp3",
         },
         {
           title: "Meditación con el Padre Nuestro",
           credit: "Práctica Esotérica Gnóstica.",
-          file: "audio/Meditacion con el Padre Nuestro.MP3",
-          download: "Meditacion con el Padre Nuestro.MP3",
+          file: "audio/Meditacion con el Padre Nuestro.mp3",
+          download: "Meditacion con el Padre Nuestro.mp3",
         },
         {
           title: "Meditar en el Padre Nuestro",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Meditar en el Padre Nuestro.MP3",
-          download: "Meditar en el Padre Nuestro.MP3",
+          file: "audio/Meditar en el Padre Nuestro.mp3",
+          download: "Meditar en el Padre Nuestro.mp3",
         },
         {
           title: "Mensaje de Juan Capasso",
           credit: "Juan Capasso Pinto.",
-          file: "audio/Mensaje de Juan Capasso - Juan Capasso Pinto.MP3",
-          download: "Mensaje de Juan Capasso - Juan Capasso Pinto.MP3",
+          file: "audio/Mensaje de Juan Capasso - Juan Capasso Pinto.mp3",
+          download: "Mensaje de Juan Capasso - Juan Capasso Pinto.mp3",
         },
         {
           title: "Mi Corazón los Distinque",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Mi Corazon los Distinque.MP3",
-          download: "Mi Corazon los Distinque.MP3",
+          file: "audio/Mi Corazon los Distinque.mp3",
+          download: "Mi Corazon los Distinque.mp3",
         },
         {
           title: "Nada es Regalado",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Nada es Regalado.MP3",
-          download: "Nada es Regalado.MP3",
+          file: "audio/Nada es Regalado.mp3",
+          download: "Nada es Regalado.mp3",
         },
         {
           title: "Oración a la Divina Madre",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Oracion a la Divina Madre.MP3",
-          download: "Oracion a la Divina Madre.MP3",
+          file: "audio/Oracion a la Divina Madre.mp3",
+          download: "Oracion a la Divina Madre.mp3",
         },
         {
           title: "Oración de Curación",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Oracion de Curacion.MP3",
-          download: "Oracion de Curacion.MP3",
+          file: "audio/Oracion de Curacion.mp3",
+          download: "Oracion de Curacion.mp3",
         },
         {
           title: "Oración Especial 1",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Oracion Especial 1.MP3",
-          download: "Oracion Especial 1.MP3",
+          file: "audio/Oracion Especial 1.mp3",
+          download: "Oracion Especial 1.mp3",
         },
         {
           title: "Oración Universal",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Oracion Universal.MP3",
-          download: "Oracion Universal.MP3",
+          file: "audio/Oracion Universal.mp3",
+          download: "Oracion Universal.mp3",
         },
         {
           title: "Poderoso Sahumerio de Limpieza",
@@ -1440,14 +1096,14 @@
         {
           title: "Práctica con Lucifer",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Practica con Lucifer.MP3",
-          download: "Practica con Lucifer.MP3",
+          file: "audio/Practica con Lucifer.mp3",
+          download: "Practica con Lucifer.mp3",
         },
         {
           title: "Práctica Especial de Año Nuevo",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Practica Especial de Año Nuevo.MP3",
-          download: "Practica Especial de Año Nuevo.MP3",
+          file: "audio/Practica Especial de Año Nuevo.mp3",
+          download: "Practica Especial de Año Nuevo.mp3",
         },
         {
           title: "Practicad",
@@ -1458,38 +1114,38 @@
         {
           title: "Regreso al Padre Interno",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Regreso al Padre Interno.MP3",
-          download: "Regreso al Padre Interno.MP3",
+          file: "audio/Regreso al Padre Interno.mp3",
+          download: "Regreso al Padre Interno.mp3",
         },
         {
           title: "Sobre los Maestros",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Sobre Los Maestros.MP3",
-          download: "Sobre Los Maestros.MP3",
+          file: "audio/Sobre Los Maestros.mp3",
+          download: "Sobre Los Maestros.mp3",
         },
         {
           title: "Talismán Esotérico",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Talisman Esoterico.MP3",
-          download: "Talisman Esoterico.MP3",
+          file: "audio/Talisman Esoterico.mp3",
+          download: "Talisman Esoterico.mp3",
         },
         {
           title: "Trabajo Especial con el Cristo Lucifer",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Trabajo Especial con el Cristo Lucifer.MP3",
-          download: "Trabajo Especial con el Cristo Lucifer.MP3",
+          file: "audio/Trabajo Especial con el Cristo Lucifer.mp3",
+          download: "Trabajo Especial con el Cristo Lucifer.mp3",
         },
         {
           title: "Trascender la Recurrencia",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Transcender la Recurrencia.MP3",
-          download: "Transcender la Recurrencia.MP3",
+          file: "audio/Transcender la Recurrencia.mp3",
+          download: "Transcender la Recurrencia.mp3",
         },
         {
           title: "Vencer al Diablo",
           credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Vencer al Diablo.MP3",
-          download: "Vencer al Diablo.MP3",
+          file: "audio/Vencer al Diablo.mp3",
+          download: "Vencer al Diablo.mp3",
         },
       ];
 
@@ -1497,17 +1153,17 @@
         lakhsmi: {
           title: "Venerable Maestro Lakhsmi Daimon",
           subtitle: "Restaurador de la Enseñanza Gnóstica",
-          body: "<p>El V.M. Lakhsmi Daimon (Teófilo Bustos) consagró su vida al servicio de la humanidad y a la orientación del pueblo gnóstico. Destacó por su profunda visión espiritual y por guiar en la práctica directa de la meditación, la mística y la cristalización del Cristo Intimo en la vida diaria.</p><p>Su enseñanza enfatiza la integración viva con la Mónada Divina, la sencillez en el trabajo sobre sí mismo y el amor a la humanidad.</p>",
+          body: "<p>El V.M. Lakhsmi Daimon consagró su vida al servicio de la humanidad y a la orientación del pueblo gnóstico.</p>",
         },
         cristo: {
           title: "Jesús el Cristo",
           subtitle: "El Gran Kabir",
-          body: "<p>Jesús de Nazaret, el Gran Kabir, representa el prototipo del Iniciado Solar y el Salvador del mundo. Encarnó el principio Cósmico del Cristo en la Tierra, entregando a la humanidad la doctrina del Amor, el Sacrificio y la Redención Interior.</p><p>Su vida y mensaje son la piedra angular y la inspiración suprema de la ciencia de la iluminación interior gnóstica.</p>",
+          body: "<p>Jesús de Nazaret representa el prototipo del Iniciado Solar y el Salvador del mundo.</p>",
         },
         samael: {
           title: "Venerable Maestro Samael Aun Weor",
-          subtitle: "Patriarca y Fundador del Movimiento Gnóstico Moderno",
-          body: "<p>El V.M. Samael Aun Weor (1917–1977), antropólogo y filósofo esotérico, devela la Quinta Devalación e instaura el Movimiento Gnóstico en la era moderna. Autor de más de 60 obras de esoterismo, psicología revolucionaria y Cábala.</p><p>Sintetizó el conocimiento de las antiguas escuelas de misterios para ponerlo al alcance de la humanidad contemporánea a través de los tres factores de la revolución de la conciencia.</p>",
+          subtitle: "Patriarca del Movimiento Gnóstico",
+          body: "<p>El V.M. Samael Aun Weor instaura el Movimiento Gnóstico en la era moderna.</p>",
         },
       };
 
@@ -1520,16 +1176,14 @@
       const playerTitle = document.getElementById("player-title");
       const playerStatus = document.getElementById("player-status");
       const backToTopButton = document.getElementById("back-to-top");
-      const releaseNotice = document.getElementById("release-notice");
-      const filterButtons = document.querySelectorAll(".filter-btn");
       const speedSelect = document.getElementById("speed-select");
       const resumeBanner = document.getElementById("resume-banner");
       const resumeTitle = document.getElementById("resume-title");
       const resumeBtn = document.getElementById("resume-btn");
+      const filterButtons = document.querySelectorAll(".filter-btn");
 
       let currentPracticeIndex = -1;
       let activeAuthorFilter = "all";
-      let isLibraryCached = false;
 
       const FAVS_KEY = "peg-favorite-practices";
       const LAST_AUDIO_KEY = "peg-last-played-practice";
@@ -1542,14 +1196,11 @@
           return [];
         }
       };
-
       const toggleFavorite = (title) => {
         let favs = getFavorites();
-        if (favs.includes(title)) {
-          favs = favs.filter((t) => t !== title);
-        } else {
-          favs.push(title);
-        }
+        favs = favs.includes(title)
+          ? favs.filter((t) => t !== title)
+          : [...favs, title];
         localStorage.setItem(FAVS_KEY, JSON.stringify(favs));
         renderPractices();
       };
@@ -1574,13 +1225,12 @@
         }
       };
 
-      const currentTheme = localStorage.getItem(THEME_KEY) || "light";
-      applyTheme(currentTheme);
-
+      applyTheme(localStorage.getItem(THEME_KEY) || "light");
       document.querySelectorAll(".theme-toggle-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
-          const isDark = document.body.classList.contains("dark-theme");
-          const newTheme = isDark ? "light" : "dark";
+          const newTheme = document.body.classList.contains("dark-theme")
+            ? "light"
+            : "dark";
           localStorage.setItem(THEME_KEY, newTheme);
           applyTheme(newTheme);
         });
@@ -1590,171 +1240,14 @@
         try {
           const lastIndex = localStorage.getItem(LAST_AUDIO_KEY);
           if (lastIndex !== null && practices[lastIndex]) {
-            const practice = practices[lastIndex];
-            resumeTitle.textContent = practice.title;
+            resumeTitle.textContent = practices[lastIndex].title;
             resumeBanner.classList.remove("hidden");
             resumeBtn.onclick = () => {
               showLibrary();
-              playPractice(practice, parseInt(lastIndex, 10));
+              playPractice(practices[lastIndex], parseInt(lastIndex, 10));
             };
           }
         } catch {}
-      };
-
-      const releaseHistory = [
-        {
-          id: "2026-09-29-doce-audios",
-          date: "29 de septiembre",
-          audios: [
-            ["Cambio de Pareja", "V.M. Lakhsmi Daimon."],
-            ["El Negocio Piramidal", "V.M. Lakhsmi Daimon."],
-            ["Los Extraterrestres", "V.M. Lakhsmi Daimon."],
-            ["Lucifer-Moisés", "V.M. Lakhsmi Daimon."],
-            ["Mensaje de Juan Capasso", "Juan Capasso Pinto."],
-            ["Oración Especial 1", "V.M. Lakhsmi Daimon."],
-            ["Oración Universal", "V.M. Lakhsmi Daimon."],
-            ["Práctica con Lucifer", "V.M. Lakhsmi Daimon."],
-            ["Sobre los Maestros", "V.M. Lakhsmi Daimon."],
-            ["Talismán Esotérico", "V.M. Lakhsmi Daimon."],
-            ["Trascender la Recurrencia", "V.M. Lakhsmi Daimon."],
-            ["Vencer al Diablo", "V.M. Lakhsmi Daimon."],
-          ],
-        },
-        {
-          id: "2026-10-07-la-obra-es-imposible",
-          date: "7 de octubre",
-          audios: [["La Obra es Imposible", "V. M. Lakhsmi Daimon."]],
-        },
-        {
-          id: "2026-10-08-cultura-practicad",
-          date: "8 de octubre",
-          audios: [
-            [
-              "La Cultura Gnóstica de Eleuterio Martínez",
-              "Eleuterio Martínez.",
-            ],
-            ["Practicad", "V. M. Samael Aun Weor."],
-          ],
-        },
-        {
-          id: "2026-10-09-mantram-y-sahumerio",
-          date: "9 de octubre",
-          audios: [
-            ["Mantram Belilin", "V. M. Samael Aun Weor."],
-            ["Poderoso Sahumerio de Limpieza", "V. M. Lakhsmi Daimon."],
-          ],
-        },
-        {
-          id: "2026-10-09-mensaje-juan-capasso",
-          date: "9 de octubre",
-          audios: [["Mensaje de Juan Capasso", "Juan Capasso Pinto."]],
-        },
-        {
-          id: "2026-10-12-las-peores-adversidades",
-          date: "12 de octubre",
-          audios: [["Las Peores Adversidades", "V. M. Samael Aun Weor."]],
-        },
-      ];
-
-      const seenReleaseNoticeKey = "peg-seen-release-id";
-      const releaseList = document.getElementById("release-updates");
-
-      try {
-        const previouslySeenId = localStorage.getItem(seenReleaseNoticeKey);
-        const latestReleaseId = releaseHistory[releaseHistory.length - 1].id;
-
-        if (!previouslySeenId) {
-          localStorage.setItem(seenReleaseNoticeKey, latestReleaseId);
-          releaseNotice.classList.add("hidden");
-        } else {
-          const seenIndex = releaseHistory.findIndex(
-            (release) => release.id === previouslySeenId,
-          );
-          const pendingReleases =
-            seenIndex < 0 ? [] : releaseHistory.slice(seenIndex + 1);
-
-          if (pendingReleases.length > 0) {
-            pendingReleases.forEach((release) => {
-              const group = document.createElement("section");
-              group.className = "release-group";
-
-              const date = document.createElement("h3");
-              date.textContent = release.date;
-              group.appendChild(date);
-
-              release.audios.forEach(([title, credit]) => {
-                const audio = document.createElement("div");
-                audio.className = "release-audio";
-
-                const audioTitle = document.createElement("span");
-                audioTitle.textContent = title;
-                audio.appendChild(audioTitle);
-
-                const audioCredit = document.createElement("span");
-                audioCredit.className = "release-audio-credit";
-                audioCredit.textContent = credit;
-                audio.appendChild(audioCredit);
-
-                group.appendChild(audio);
-              });
-
-              releaseList.appendChild(group);
-            });
-            releaseNotice.classList.remove("hidden");
-          } else {
-            releaseNotice.classList.add("hidden");
-          }
-        }
-      } catch {
-        releaseNotice.classList.add("hidden");
-      }
-
-      document
-        .getElementById("release-dismiss")
-        .addEventListener("click", () => {
-          try {
-            const latestReleaseId =
-              releaseHistory[releaseHistory.length - 1].id;
-            localStorage.setItem(seenReleaseNoticeKey, latestReleaseId);
-          } catch {}
-          releaseNotice.classList.add("hidden");
-        });
-
-      const modal = document.getElementById("teacher-modal");
-      const modalTitle = document.getElementById("modal-title");
-      const modalSubtitle = document.getElementById("modal-subtitle");
-      const modalBody = document.getElementById("modal-body");
-      const modalClose = document.getElementById("modal-close");
-
-      const openTeacherBio = (teacherKey) => {
-        const bio = teacherBios[teacherKey];
-        if (!bio) return;
-        modalTitle.textContent = bio.title;
-        modalSubtitle.textContent = bio.subtitle;
-        modalBody.innerHTML = bio.body;
-        modal.classList.remove("hidden");
-      };
-
-      document.querySelectorAll(".photo-slot").forEach((slot) => {
-        slot.addEventListener("click", () => {
-          const teacher = slot.getAttribute("data-teacher");
-          openTeacherBio(teacher);
-        });
-      });
-
-      modalClose.addEventListener("click", () => modal.classList.add("hidden"));
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) modal.classList.add("hidden");
-      });
-
-      const updateBackToTopVisibility = () => {
-        const preparationVisible = !preparation.classList.contains("hidden");
-        const libraryVisible = !library.classList.contains("hidden");
-        const threshold = preparationVisible ? 240 : 400;
-        const shouldShow =
-          (preparationVisible || libraryVisible) && window.scrollY >= threshold;
-
-        backToTopButton.classList.toggle("hidden", !shouldShow);
       };
 
       const showPreparation = () => {
@@ -1762,17 +1255,13 @@
         library.classList.add("hidden");
         preparation.classList.remove("hidden");
         window.scrollTo(0, 0);
-        updateBackToTopVisibility();
       };
-
       const showLibrary = () => {
         cover.classList.add("hidden");
         preparation.classList.add("hidden");
         library.classList.remove("hidden");
         window.scrollTo(0, 0);
-        updateBackToTopVisibility();
       };
-
       const showCover = () => {
         audioPlayer.pause();
         playerView.classList.add("hidden");
@@ -1781,29 +1270,39 @@
         cover.classList.remove("hidden");
         checkLastPlayed();
         window.scrollTo(0, 0);
-        updateBackToTopVisibility();
       };
 
-      // REPRODUCTOR CON ENCODING DE RUTA SEGURO
+      // FUNCIÓN DE REPRODUCCIÓN REPARADA Y RESISTENTE A ERRORES DE RUTAS
       const playPractice = (practice, practiceIndex) => {
         currentPracticeIndex = practiceIndex;
 
-        // Garantiza que caracteres especiales y espacios no rompan la reproduccion
-        const safePath = encodeURI(practice.file);
-        audioPlayer.src = safePath;
+        // Limpia la ruta para evitar errores con espacios y caracteres especiales
+        const rawPath = practice.file;
+        const encodedPath = rawPath
+          .split("/")
+          .map((part) => encodeURIComponent(part))
+          .join("/");
+
+        audioPlayer.src = encodedPath;
         audioPlayer.playbackRate = parseFloat(speedSelect.value || 1.0);
         playerTitle.textContent = practice.title;
-        playerStatus.textContent = "Reproduciendo audio";
+        playerStatus.textContent = "Cargando audio...";
         playerView.classList.remove("hidden");
 
         try {
           localStorage.setItem(LAST_AUDIO_KEY, practiceIndex.toString());
         } catch {}
 
-        audioPlayer.play().catch((err) => {
-          console.error("Error al reproducir:", err);
-          playerStatus.textContent = "Pulsa reproducir para comenzar";
-        });
+        audioPlayer
+          .play()
+          .then(() => {
+            playerStatus.textContent = "Reproduciendo audio";
+          })
+          .catch((err) => {
+            console.error("Error al reproducir el archivo:", encodedPath, err);
+            playerStatus.textContent =
+              "Error al cargar. Verifica el archivo en /audio.";
+          });
       };
 
       speedSelect.addEventListener("change", (e) => {
@@ -1815,27 +1314,20 @@
         const favs = getFavorites();
 
         const filtered = practices.filter((practice) => {
-          if (activeAuthorFilter === "favs") {
+          if (activeAuthorFilter === "favs")
             return favs.includes(practice.title);
-          }
-          let matchesAuthor = true;
           const creditUpper = practice.credit.toUpperCase();
-          if (activeAuthorFilter === "samael") {
-            matchesAuthor = creditUpper.includes("SAMAEL");
-          } else if (activeAuthorFilter === "lakhsmi") {
-            matchesAuthor = creditUpper.includes("LAKHSMI");
-          } else if (activeAuthorFilter === "otros") {
-            matchesAuthor =
+          if (activeAuthorFilter === "samael")
+            return creditUpper.includes("SAMAEL");
+          if (activeAuthorFilter === "lakhsmi")
+            return creditUpper.includes("LAKHSMI");
+          if (activeAuthorFilter === "otros")
+            return (
               !creditUpper.includes("SAMAEL") &&
-              !creditUpper.includes("LAKHSMI");
-          }
-          return matchesAuthor;
+              !creditUpper.includes("LAKHSMI")
+            );
+          return true;
         });
-
-        if (filtered.length === 0) {
-          practiceGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--ink-soft); padding: 40px 0;">No hay audios en esta categoría.</p>`;
-          return;
-        }
 
         filtered.forEach((practice) => {
           const originalIndex = practices.findIndex(
@@ -1844,36 +1336,30 @@
           const isFav = favs.includes(practice.title);
           const card = document.createElement("article");
           card.className = "practice-card";
-          const downloadName = practice.download || `audio.mp3`;
 
           card.innerHTML = `
             <div>
               <div class="card-top">
                 <h3>${practice.title}</h3>
-                <button class="fav-btn ${isFav ? "is-fav" : ""}" type="button" aria-label="Favorito" title="${isFav ? "Quitar de favoritos" : "Agregar a favoritos"}">★</button>
+                <button class="fav-btn ${isFav ? "is-fav" : ""}" type="button">★</button>
               </div>
               <p>No busques fuera, lo que dentro de ti se encuentra.</p>
               <p class="practice-credit">${practice.credit}</p>
-              <div class="card-badges">
-                ${isLibraryCached ? '<span class="offline-badge">✔ Sin conexión</span>' : ""}
-              </div>
             </div>
             <div class="card-actions">
-              <button class="listen-button" type="button">Escuchar <span aria-hidden="true">▶</span></button>
-              <a class="download-button" href="${encodeURI(practice.file)}" download="${downloadName}" aria-label="Descargar ${practice.title}" title="Descargar audio">↓</a>
+              <button class="listen-button" type="button">Escuchar ▶</button>
+              <a class="download-button" href="${encodeURI(practice.file)}" download="${practice.download}">↓</a>
             </div>`;
 
           card.querySelector(".fav-btn").addEventListener("click", (e) => {
             e.stopPropagation();
             toggleFavorite(practice.title);
           });
-
           card
             .querySelector(".listen-button")
             .addEventListener("click", () =>
               playPractice(practice, originalIndex),
             );
-
           practiceGrid.appendChild(card);
         });
       };
@@ -1902,73 +1388,18 @@
       document
         .getElementById("home-button")
         .addEventListener("click", showCover);
-      document
-        .querySelector("#library .brand")
-        .addEventListener("click", (e) => {
-          e.preventDefault();
-          showCover();
-        });
-
       document.getElementById("close-player").addEventListener("click", () => {
         audioPlayer.pause();
         playerView.classList.add("hidden");
       });
 
-      audioPlayer.addEventListener("play", () => {
-        playerStatus.textContent = "Reproduciendo audio";
-      });
-      audioPlayer.addEventListener("pause", () => {
-        playerStatus.textContent = "Audio en pausa";
-      });
       audioPlayer.addEventListener("ended", () => {
-        const nextPracticeIndex = currentPracticeIndex + 1;
-        const nextPractice = practices[nextPracticeIndex];
-
-        if (nextPractice) {
-          playerStatus.textContent = "Preparando la siguiente práctica";
-          playPractice(nextPractice, nextPracticeIndex);
-          return;
-        }
-        playerStatus.textContent = "Has completado todas las prácticas";
-      });
-
-      window.addEventListener("scroll", updateBackToTopVisibility);
-      backToTopButton.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        const nextIndex = currentPracticeIndex + 1;
+        if (practices[nextIndex]) playPractice(practices[nextIndex], nextIndex);
       });
 
       checkLastPlayed();
       renderPractices();
-
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.addEventListener("message", (event) => {
-          if (event.data?.type !== "AUDIO_CACHE_PROGRESS") return;
-
-          const { completed, failed, total, done } = event.data;
-          const offlineStatus = document.getElementById("offline-status");
-          if (!done) {
-            offlineStatus.textContent = `Preparando audios para escuchar sin conexión: ${completed} de ${total}.`;
-          } else if (failed) {
-            offlineStatus.textContent = `${total - failed} de ${total} audios disponibles sin conexión; conecta de nuevo para reintentar los restantes.`;
-          } else {
-            offlineStatus.textContent = "Biblioteca disponible sin conexión.";
-            isLibraryCached = true;
-            renderPractices();
-          }
-        });
-
-        navigator.serviceWorker
-          .register("sw.js")
-          .then(async () => {
-            const registration = await navigator.serviceWorker.ready;
-            registration.active?.postMessage({ type: "CACHE_AUDIO_LIBRARY" });
-          })
-          .catch((error) => {
-            console.error("No se pudo activar el modo sin conexión:", error);
-            document.getElementById("offline-status").textContent =
-              "No se pudo preparar el modo sin conexión.";
-          });
-      }
     </script>
   </body>
 </html>
