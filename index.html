@@ -16,10 +16,26 @@
         --ink-soft: #4a635d;
         --paper: #f8f6f0;
         --paper-light: #fbfaf6;
+        --card-bg: #fffef9;
         --saffron: #e8a858;
         --saffron-dark: #b87a2a;
         --line: #d8d8c9;
+        --topbar-bg: rgba(251, 250, 246, 0.95);
       }
+
+      /* TEMA NOCTURNO / MODO OSCURO */
+      body.dark-theme {
+        --ink: #e2ece9;
+        --ink-soft: #a1b8b2;
+        --paper: #121d1b;
+        --paper-light: #182825;
+        --card-bg: #1c2e2a;
+        --saffron: #e8a858;
+        --saffron-dark: #f0cc91;
+        --line: #2d4540;
+        --topbar-bg: rgba(24, 40, 37, 0.95);
+      }
+
       * {
         box-sizing: border-box;
       }
@@ -31,6 +47,9 @@
         color: var(--ink);
         background: var(--paper);
         font-family: Georgia, "Times New Roman", serif;
+        transition:
+          background-color 250ms ease,
+          color 250ms ease;
       }
       button,
       select {
@@ -46,6 +65,8 @@
         min-height: 100vh;
         overflow: hidden;
       }
+
+      /* PORTADA */
       .cover {
         min-height: 100vh;
         display: grid;
@@ -57,7 +78,7 @@
             rgba(209, 139, 69, 0.22),
             transparent 28%
           ),
-          linear-gradient(125deg, #183b3a 0%, #235252 54%, #527366 100%);
+          linear-gradient(125deg, #122b2a 0%, #183b3a 54%, #355348 100%);
         color: #fbfaf6;
         position: relative;
       }
@@ -65,7 +86,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        opacity: 0.17;
+        opacity: 0.15;
         background-image: linear-gradient(
           30deg,
           transparent 48%,
@@ -114,9 +135,56 @@
       .cover-actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 14px;
+        gap: 12px;
         margin-bottom: 24px;
       }
+
+      /* BOTÓN CONTINUAR REPRODUCCIÓN */
+      .resume-banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        width: min(100%, 620px);
+        margin: 0 0 20px;
+        padding: 12px 16px;
+        border: 1px solid rgba(232, 168, 88, 0.6);
+        border-radius: 4px;
+        background: rgba(24, 59, 58, 0.6);
+        backdrop-filter: blur(4px);
+      }
+      .resume-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        font-family: Arial, sans-serif;
+      }
+      .resume-info span {
+        font-size: 0.72rem;
+        color: #e4c18b;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .resume-info strong {
+        font-size: 0.92rem;
+        color: #fff;
+        font-family: Georgia, serif;
+      }
+      .resume-btn {
+        padding: 8px 14px;
+        border: 0;
+        border-radius: 2px;
+        background: var(--saffron);
+        color: #1b302d;
+        font:
+          bold 0.8rem Arial,
+          sans-serif;
+        white-space: nowrap;
+      }
+      .resume-btn:hover {
+        background: #e2a45e;
+      }
+
       .release-notice {
         display: flex;
         flex-direction: column;
@@ -198,7 +266,7 @@
       .secondary-button {
         border: 0;
         border-radius: 2px;
-        padding: 15px 22px;
+        padding: 14px 20px;
         transition:
           transform 180ms ease,
           background 180ms ease,
@@ -229,15 +297,69 @@
           0.84rem/1.5 Arial,
           sans-serif;
       }
-      .preparation {
+
+      /* SECCIÓN PREPARACIÓN Y BIBLIOTECA */
+      .preparation,
+      .library {
         min-height: 100vh;
-        padding-bottom: 56px;
         background: var(--paper-light);
+        transition: background 250ms ease;
       }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        max-width: 1180px;
+        margin: auto;
+        padding: 18px 24px;
+        position: sticky;
+        top: 0;
+        z-index: 8;
+        background: var(--topbar-bg);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+      }
+      .topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .theme-toggle-btn {
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--ink);
+        padding: 6px 12px;
+        border-radius: 20px;
+        font:
+          0.8rem Arial,
+          sans-serif;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .theme-toggle-btn:hover {
+        border-color: var(--saffron);
+      }
+      .brand {
+        color: var(--ink);
+        font-size: 1.2rem;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .back-button {
+        border: 0;
+        background: transparent;
+        color: var(--ink-soft);
+        padding: 8px 0;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
       .preparation-main {
         max-width: 1180px;
         margin: auto;
-        padding: 18px 24px 0;
+        padding: 24px 24px 0;
       }
       .photo-grid {
         display: grid;
@@ -303,6 +425,7 @@
       .photo-source a {
         color: var(--ink-soft);
       }
+
       .preparation-header {
         max-width: 820px;
         margin: 52px auto 30px;
@@ -354,10 +477,12 @@
         justify-content: center;
         padding: 38px 0 0;
       }
+
+      /* MODAL */
       .modal-backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(24, 59, 58, 0.75);
+        background: rgba(18, 29, 27, 0.8);
         backdrop-filter: blur(4px);
         z-index: 10;
         display: grid;
@@ -370,16 +495,16 @@
         width: 100%;
         border-radius: 6px;
         padding: 32px;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
         border: 1px solid var(--line);
         position: relative;
         max-height: 85vh;
         overflow-y: auto;
+        color: var(--ink);
       }
       .modal-box h3 {
         margin: 0 0 6px;
         font-size: 1.8rem;
-        color: var(--ink);
       }
       .modal-box .modal-subtitle {
         color: var(--saffron-dark);
@@ -408,37 +533,12 @@
         background: rgba(0, 0, 0, 0.05);
         color: var(--ink);
       }
-      .library {
-        min-height: 100vh;
-        background: var(--paper-light);
-      }
-      .topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        max-width: 1180px;
-        margin: auto;
-        padding: 22px 24px;
-      }
-      .brand {
-        color: var(--ink);
-        font-size: 1.2rem;
-        text-decoration: none;
-      }
-      .back-button {
-        border: 0;
-        background: transparent;
-        color: var(--ink-soft);
-        padding: 8px 0;
-        text-decoration: underline;
-        text-underline-offset: 4px;
-      }
+
+      /* BIBLIOTECA Y TARJETAS */
       .library-header {
         max-width: 1180px;
         margin: auto;
-        padding: 42px 24px 24px;
-        border-top: 1px solid var(--line);
+        padding: 32px 24px 20px;
       }
       .library-header h2 {
         max-width: 750px;
@@ -449,7 +549,7 @@
       }
       .library-header p {
         max-width: 620px;
-        margin: 0 0 20px;
+        margin: 0 0 18px;
         color: var(--ink-soft);
         font-size: 1.05rem;
         line-height: 1.6;
@@ -459,69 +559,127 @@
         flex-wrap: wrap;
         gap: 12px;
         align-items: center;
-        margin-top: 20px;
-        padding-top: 20px;
+        margin-top: 16px;
+        padding-top: 16px;
         border-top: 1px dashed var(--line);
       }
       .author-filters {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 8px;
       }
       .filter-btn {
         border: 1px solid var(--line);
-        background: #fff;
+        background: var(--card-bg);
         color: var(--ink-soft);
-        padding: 9px 18px;
+        padding: 8px 16px;
         border-radius: 20px;
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         transition: all 180ms ease;
       }
       .filter-btn:hover,
       .filter-btn.active {
         background: var(--ink);
-        color: #fff;
+        color: var(--paper-light);
         border-color: var(--ink);
       }
+
       .practice-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
         gap: 16px;
         max-width: 1180px;
         margin: auto;
-        padding: 0 24px 70px;
+        padding: 0 24px 80px;
       }
       .practice-card {
         display: flex;
         min-height: 250px;
         flex-direction: column;
         justify-content: space-between;
-        padding: 24px;
+        padding: 22px;
         border: 1px solid var(--line);
-        background: #fffef9;
-        box-shadow: 0 8px 24px rgba(24, 59, 58, 0.05);
+        background: var(--card-bg);
+        border-radius: 4px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+        position: relative;
+        transition:
+          transform 180ms ease,
+          box-shadow 180ms ease;
+      }
+      .practice-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      }
+      .card-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .fav-btn {
+        border: none;
+        background: transparent;
+        font-size: 1.3rem;
+        color: #b8c4c1;
+        padding: 0;
+        line-height: 1;
+        transition:
+          color 180ms ease,
+          transform 180ms ease;
+      }
+      .fav-btn:hover {
+        transform: scale(1.15);
+      }
+      .fav-btn.is-fav {
+        color: var(--saffron);
       }
       .practice-card h3 {
-        margin: 17px 0 10px;
-        font-size: 1.7rem;
+        margin: 8px 0 10px;
+        font-size: 1.6rem;
         font-weight: 400;
+        line-height: 1.15;
       }
       .practice-card p {
         margin: 0;
         color: var(--ink-soft);
-        line-height: 1.55;
+        line-height: 1.5;
+        font-size: 0.95rem;
       }
       .practice-card .practice-credit {
         margin-top: 8px;
         color: var(--saffron-dark);
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         font-style: italic;
       }
+
+      .card-badges {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .offline-badge {
+        font:
+          bold 0.68rem/1 Arial,
+          sans-serif;
+        color: #2e7d32;
+        background: #e8f5e9;
+        border: 1px solid #c8e6c9;
+        padding: 3px 7px;
+        border-radius: 10px;
+      }
+      body.dark-theme .offline-badge {
+        background: rgba(46, 125, 50, 0.2);
+        color: #81c784;
+        border-color: rgba(46, 125, 50, 0.4);
+      }
+
       .card-actions {
         display: flex !important;
         align-items: center !important;
-        gap: 14px !important;
-        margin-top: 28px !important;
+        gap: 12px !important;
+        margin-top: 22px !important;
         visibility: visible !important;
         opacity: 1 !important;
       }
@@ -530,56 +688,54 @@
         visibility: visible !important;
         opacity: 1 !important;
         flex: 1;
-        min-height: 44px;
+        min-height: 42px;
         align-items: center;
         justify-content: center;
         border: 0;
         border-radius: 2px;
-        padding: 12px;
+        padding: 10px;
         background: var(--ink);
-        color: #fff;
-        appearance: none;
-        -webkit-appearance: none;
+        color: var(--paper-light);
         touch-action: manipulation;
         font-weight: 700;
+        font-size: 0.92rem;
       }
       .listen-button:hover {
-        background: #285f5b;
-      }
-      .listen-button:focus-visible {
-        outline: 3px solid var(--saffron);
-        outline-offset: 2px;
+        opacity: 0.9;
       }
       .download-button {
-        width: 44px;
-        height: 44px;
+        width: 42px;
+        height: 42px;
         border: 1px solid var(--line);
         border-radius: 2px;
         background: transparent;
         color: var(--ink);
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         text-align: center;
         text-decoration: none;
-        line-height: 42px;
+        line-height: 40px;
       }
       .download-button:hover {
         border-color: var(--saffron);
         color: var(--saffron-dark);
       }
+
+      /* REPRODUCTOR FLOTANTE CON CONTROL DE VELOCIDAD */
       .player-view {
         position: fixed;
         inset: auto 0 0;
-        z-index: 4;
+        z-index: 9;
         padding: 14px 18px 18px;
-        background: rgba(24, 59, 58, 0.98);
+        background: rgba(18, 38, 35, 0.97);
         color: #fff;
-        box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.18);
+        box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
       }
       .player-inner {
         display: grid;
-        grid-template-columns: minmax(160px, 1fr) 2fr auto;
+        grid-template-columns: minmax(160px, 1fr) 2fr auto auto;
         align-items: center;
-        gap: 20px;
+        gap: 16px;
         max-width: 1180px;
         margin: auto;
       }
@@ -594,11 +750,11 @@
         white-space: nowrap;
       }
       .player-label strong {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         font-weight: 400;
       }
       .player-label span {
-        margin-top: 4px;
+        margin-top: 3px;
         color: #b8d0c9;
         font:
           0.78rem Arial,
@@ -608,21 +764,52 @@
         width: 100%;
         height: 38px;
       }
+      .speed-control {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .speed-control label {
+        font:
+          0.72rem Arial,
+          sans-serif;
+        color: #b8d0c9;
+      }
+      .speed-select {
+        background: transparent;
+        color: #fff;
+        border: none;
+        font:
+          0.82rem Arial,
+          sans-serif;
+        cursor: pointer;
+        padding: 2px 0;
+      }
+      .speed-select option {
+        background: #183b3a;
+        color: #fff;
+      }
       .close-player {
         border: 1px solid #789893;
         border-radius: 2px;
         background: transparent;
         color: #fff;
-        padding: 9px 12px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
       }
       .close-player:hover {
         background: #285f5b;
       }
+
       .back-to-top {
         position: fixed;
         right: 22px;
         bottom: 112px;
-        z-index: 5;
+        z-index: 8;
         width: 44px;
         height: 44px;
         border: 1px solid var(--line);
@@ -631,7 +818,7 @@
         color: var(--ink);
         font-size: 1.4rem;
         line-height: 1;
-        box-shadow: 0 8px 22px rgba(24, 59, 58, 0.18);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
         transition:
           transform 180ms ease,
           background 180ms ease;
@@ -648,7 +835,8 @@
           0.8rem/1.5 Arial,
           sans-serif;
       }
-      @media (max-width: 700px) {
+
+      @media (max-width: 768px) {
         .cover {
           justify-items: start;
         }
@@ -658,22 +846,18 @@
         .topbar,
         .library-header,
         .practice-grid {
-          padding-left: 18px;
-          padding-right: 18px;
+          padding-left: 16px;
+          padding-right: 16px;
         }
         .preparation-main {
-          padding-right: 18px;
-          padding-left: 18px;
+          padding-right: 16px;
+          padding-left: 16px;
         }
         .photo-grid {
           grid-template-areas: "left center right";
           grid-template-columns: repeat(3, minmax(0, 1fr));
           align-items: start;
           gap: 8px;
-        }
-        .photo-placeholder {
-          min-height: 0;
-          padding: 8px 4px;
         }
         .photo-slot-center .christ-image {
           width: min(100%, 180px);
@@ -692,22 +876,26 @@
           margin-top: 38px;
         }
         .preparation-content {
-          padding: 0 18px;
+          padding: 0 16px;
         }
         .information-item {
           grid-template-columns: 34px minmax(0, 1fr);
           gap: 8px;
         }
-        .library-header {
-          padding-top: 32px;
-        }
         .player-inner {
           grid-template-columns: 1fr auto;
-          gap: 10px 16px;
+          gap: 10px 12px;
         }
         .player-inner audio {
           grid-column: 1 / -1;
           grid-row: 2;
+        }
+        .speed-control {
+          grid-row: 1;
+          grid-column: 2;
+        }
+        .close-player {
+          display: none;
         }
         .back-to-top {
           right: 16px;
@@ -723,7 +911,7 @@
         <div class="cover-inner">
           <img
             class="cover-logo"
-            src="images/logos.png"
+            src="images/logos.jfif"
             alt="Emblema de la Iglesia Gnóstica Cristiana Universal Samael Aun Weor"
             width="88"
             height="88"
@@ -736,7 +924,18 @@
             sigas tu propio ritmo.
           </p>
 
-          <!-- AVISO DE NUEVAS ACTUALIZACIONES (SOLO PARA USUARIOS RECURRENTES CON NOVEDADES) -->
+          <!-- BANNER CONTINUAR REPRODUCCIÓN (ÚLTIMO AUDIO) -->
+          <div id="resume-banner" class="resume-banner hidden">
+            <div class="resume-info">
+              <span>Continuar escuchando:</span>
+              <strong id="resume-title">Audio anterior</strong>
+            </div>
+            <button id="resume-btn" class="resume-btn" type="button">
+              Escuchar ▶
+            </button>
+          </div>
+
+          <!-- AVISO DE NUEVAS ACTUALIZACIONES -->
           <aside
             id="release-notice"
             class="release-notice hidden"
@@ -752,7 +951,7 @@
             </button>
           </aside>
 
-          <!-- BOTONES DE NAVEGACIÓN EN LA PORTADA -->
+          <!-- BOTONES DE NAVEGACIÓN PORTADA -->
           <div class="cover-actions">
             <button
               id="direct-audio-button"
@@ -784,13 +983,23 @@
       >
         <nav class="topbar" aria-label="Navegación de información previa">
           <a class="brand" href="#cover" id="preparation-brand">PEG</a>
-          <button
-            id="preparation-home-button"
-            class="back-button"
-            type="button"
-          >
-            ← Volver a portada
-          </button>
+          <div class="topbar-right">
+            <button
+              class="theme-toggle-btn"
+              type="button"
+              aria-label="Cambiar tema"
+            >
+              <span class="theme-icon">🌙</span>
+              <span class="theme-text">Modo Noche</span>
+            </button>
+            <button
+              id="preparation-home-button"
+              class="back-button"
+              type="button"
+            >
+              ← Volver
+            </button>
+          </div>
         </nav>
         <main class="preparation-main">
           <div class="photo-grid" aria-label="Fotografías de presentación">
@@ -946,22 +1155,30 @@
       >
         <nav class="topbar" aria-label="Navegación principal">
           <a class="brand" href="#cover">PEG</a>
-          <button id="home-button" class="back-button" type="button">
-            ← Volver al inicio
-          </button>
+          <div class="topbar-right">
+            <button
+              class="theme-toggle-btn"
+              type="button"
+              aria-label="Cambiar tema"
+            >
+              <span class="theme-icon">🌙</span>
+              <span class="theme-text">Modo Noche</span>
+            </button>
+            <button id="home-button" class="back-button" type="button">
+              ← Inicio
+            </button>
+          </div>
         </nav>
         <header class="library-header">
           <p class="eyebrow">Biblioteca Gnóstica</p>
           <h2 id="library-title">Elige un audio y permanece presente.</h2>
-          <p>
-            Filtra por autor o maestro para explorar las prácticas de manera
-            sencilla.
-          </p>
+          <p>Filtra por autor o guarda tus audios preferidos en favoritos.</p>
 
-          <!-- FILTROS POR AUTOR -->
+          <!-- FILTROS POR AUTOR Y FAVORITOS -->
           <div class="filter-toolbar">
             <div class="author-filters">
               <button class="filter-btn active" data-author="all">Todos</button>
+              <button class="filter-btn" data-author="favs">★ Favoritos</button>
               <button class="filter-btn" data-author="samael">
                 V.M. Samael
               </button>
@@ -980,7 +1197,7 @@
         </footer>
       </section>
 
-      <!-- REPRODUCTOR FLOTANTE -->
+      <!-- REPRODUCTOR FLOTANTE CON CONTROL DE VELOCIDAD -->
       <aside
         id="player-view"
         class="player-view hidden"
@@ -992,6 +1209,17 @@
             <span id="player-status">Lista para comenzar</span>
           </div>
           <audio id="audio-player" controls preload="metadata"></audio>
+
+          <div class="speed-control" title="Velocidad de reproducción">
+            <label for="speed-select">Velocidad:</label>
+            <select id="speed-select" class="speed-select">
+              <option value="0.8">0.8x</option>
+              <option value="1.0" selected>1.0x</option>
+              <option value="1.25">1.25x</option>
+              <option value="1.5">1.5x</option>
+            </select>
+          </div>
+
           <button id="close-player" class="close-player" type="button">
             Cerrar
           </button>
@@ -1294,10 +1522,89 @@
       const backToTopButton = document.getElementById("back-to-top");
       const releaseNotice = document.getElementById("release-notice");
       const filterButtons = document.querySelectorAll(".filter-btn");
+      const speedSelect = document.getElementById("speed-select");
+      const resumeBanner = document.getElementById("resume-banner");
+      const resumeTitle = document.getElementById("resume-title");
+      const resumeBtn = document.getElementById("resume-btn");
 
       let currentPracticeIndex = -1;
       let activeAuthorFilter = "all";
+      let isLibraryCached = false;
 
+      // FAVORITOS Y ÚLTIMO AUDIO GUARDADO
+      const FAVS_KEY = "peg-favorite-practices";
+      const LAST_AUDIO_KEY = "peg-last-played-practice";
+      const THEME_KEY = "peg-app-theme";
+
+      const getFavorites = () => {
+        try {
+          return JSON.parse(localStorage.getItem(FAVS_KEY)) || [];
+        } catch {
+          return [];
+        }
+      };
+
+      const toggleFavorite = (title) => {
+        let favs = getFavorites();
+        if (favs.includes(title)) {
+          favs = favs.filter((t) => t !== title);
+        } else {
+          favs.push(title);
+        }
+        localStorage.setItem(FAVS_KEY, JSON.stringify(favs));
+        renderPractices();
+      };
+
+      // MODO NOCTURNO / CLARO
+      const applyTheme = (theme) => {
+        if (theme === "dark") {
+          document.body.classList.add("dark-theme");
+          document
+            .querySelectorAll(".theme-icon")
+            .forEach((e) => (e.textContent = "☀️"));
+          document
+            .querySelectorAll(".theme-text")
+            .forEach((e) => (e.textContent = "Modo Día"));
+        } else {
+          document.body.classList.remove("dark-theme");
+          document
+            .querySelectorAll(".theme-icon")
+            .forEach((e) => (e.textContent = "🌙"));
+          document
+            .querySelectorAll(".theme-text")
+            .forEach((e) => (e.textContent = "Modo Noche"));
+        }
+      };
+
+      const currentTheme = localStorage.getItem(THEME_KEY) || "light";
+      applyTheme(currentTheme);
+
+      document.querySelectorAll(".theme-toggle-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const isDark = document.body.classList.contains("dark-theme");
+          const newTheme = isDark ? "light" : "dark";
+          localStorage.setItem(THEME_KEY, newTheme);
+          applyTheme(newTheme);
+        });
+      });
+
+      // VERIFICAR ÚLTIMO AUDIO REPRODUCIDO PARA EL BANNER
+      const checkLastPlayed = () => {
+        try {
+          const lastIndex = localStorage.getItem(LAST_AUDIO_KEY);
+          if (lastIndex !== null && practices[lastIndex]) {
+            const practice = practices[lastIndex];
+            resumeTitle.textContent = practice.title;
+            resumeBanner.classList.remove("hidden");
+            resumeBtn.onclick = () => {
+              showLibrary();
+              playPractice(practice, parseInt(lastIndex, 10));
+            };
+          }
+        } catch {}
+      };
+
+      // HISTORIAL DE ACTUALIZACIONES
       const releaseHistory = [
         {
           id: "2026-09-29-doce-audios",
@@ -1356,8 +1663,6 @@
       const seenReleaseNoticeKey = "peg-seen-release-id";
       const releaseList = document.getElementById("release-updates");
 
-      // LÓGICA INTELIGENTE DE ACTUALIZACIONES:
-      // Al haber un ID más reciente ("2026-10-12-las-peores-adversidades"), saltará automáticamente el aviso en la portada.
       try {
         const previouslySeenId = localStorage.getItem(seenReleaseNoticeKey);
         const latestReleaseId = releaseHistory[releaseHistory.length - 1].id;
@@ -1419,6 +1724,7 @@
           releaseNotice.classList.add("hidden");
         });
 
+      // MODAL RESEÑAS DE MAESTROS
       const modal = document.getElementById("teacher-modal");
       const modalTitle = document.getElementById("modal-title");
       const modalSubtitle = document.getElementById("modal-subtitle");
@@ -1446,6 +1752,7 @@
         if (e.target === modal) modal.classList.add("hidden");
       });
 
+      // BOTÓN VOLVER ARRIBA Y NAVEGACIÓN
       const updateBackToTopVisibility = () => {
         const preparationVisible = !preparation.classList.contains("hidden");
         const libraryVisible = !library.classList.contains("hidden");
@@ -1478,25 +1785,42 @@
         preparation.classList.add("hidden");
         library.classList.add("hidden");
         cover.classList.remove("hidden");
+        checkLastPlayed();
         window.scrollTo(0, 0);
         updateBackToTopVisibility();
       };
 
+      // REPRODUCTOR FLOTANTE Y CONTROL DE VELOCIDAD
       const playPractice = (practice, practiceIndex) => {
         currentPracticeIndex = practiceIndex;
         audioPlayer.src = encodeURI(practice.file);
+        audioPlayer.playbackRate = parseFloat(speedSelect.value || 1.0);
         playerTitle.textContent = practice.title;
         playerStatus.textContent = "Reproduciendo audio";
         playerView.classList.remove("hidden");
+
+        try {
+          localStorage.setItem(LAST_AUDIO_KEY, practiceIndex.toString());
+        } catch {}
+
         audioPlayer.play().catch(() => {
           playerStatus.textContent = "Pulsa reproducir para comenzar";
         });
       };
 
+      speedSelect.addEventListener("change", (e) => {
+        audioPlayer.playbackRate = parseFloat(e.target.value);
+      });
+
+      // RENDERIZADO Y FILTRADO DE TARJETAS
       const renderPractices = () => {
         practiceGrid.innerHTML = "";
+        const favs = getFavorites();
 
         const filtered = practices.filter((practice) => {
+          if (activeAuthorFilter === "favs") {
+            return favs.includes(practice.title);
+          }
           let matchesAuthor = true;
           const creditUpper = practice.credit.toUpperCase();
           if (activeAuthorFilter === "samael") {
@@ -1511,29 +1835,48 @@
           return matchesAuthor;
         });
 
+        if (filtered.length === 0) {
+          practiceGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--ink-soft); padding: 40px 0;">No hay audios en esta categoría.</p>`;
+          return;
+        }
+
         filtered.forEach((practice) => {
           const originalIndex = practices.findIndex(
             (p) => p.title === practice.title,
           );
+          const isFav = favs.includes(practice.title);
           const card = document.createElement("article");
           card.className = "practice-card";
           const downloadName = practice.download || `audio.mp3`;
+
           card.innerHTML = `
             <div>
-              <h3>${practice.title}</h3>
+              <div class="card-top">
+                <h3>${practice.title}</h3>
+                <button class="fav-btn ${isFav ? "is-fav" : ""}" type="button" aria-label="Favorito" title="${isFav ? "Quitar de favoritos" : "Agregar a favoritos"}">★</button>
+              </div>
               <p>No busques fuera, lo que dentro de ti se encuentra.</p>
               <p class="practice-credit">${practice.credit}</p>
+              <div class="card-badges">
+                ${isLibraryCached ? '<span class="offline-badge">✔ Sin conexión</span>' : ""}
+              </div>
             </div>
             <div class="card-actions">
               <button class="listen-button" type="button">Escuchar <span aria-hidden="true">▶</span></button>
               <a class="download-button" href="${encodeURI(practice.file)}" download="${downloadName}" aria-label="Descargar ${practice.title}" title="Descargar audio">↓</a>
             </div>`;
 
+          card.querySelector(".fav-btn").addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggleFavorite(practice.title);
+          });
+
           card
             .querySelector(".listen-button")
             .addEventListener("click", () =>
               playPractice(practice, originalIndex),
             );
+
           practiceGrid.appendChild(card);
         });
       };
@@ -1547,6 +1890,7 @@
         });
       });
 
+      // EVENTOS DE NAVEGACIÓN
       document
         .getElementById("direct-audio-button")
         .addEventListener("click", showLibrary);
@@ -1589,7 +1933,6 @@
           playPractice(nextPractice, nextPracticeIndex);
           return;
         }
-
         playerStatus.textContent = "Has completado todas las prácticas";
       });
 
@@ -1598,8 +1941,11 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
+      // INICIALIZACIÓN
+      checkLastPlayed();
       renderPractices();
 
+      // SERVICE WORKER
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.addEventListener("message", (event) => {
           if (event.data?.type !== "AUDIO_CACHE_PROGRESS") return;
@@ -1612,6 +1958,8 @@
             offlineStatus.textContent = `${total - failed} de ${total} audios disponibles sin conexión; conecta de nuevo para reintentar los restantes.`;
           } else {
             offlineStatus.textContent = "Biblioteca disponible sin conexión.";
+            isLibraryCached = true;
+            renderPractices();
           }
         });
 
