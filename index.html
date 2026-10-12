@@ -12,6 +12,12 @@
     <title>Biblioteca Esotérica Gnóstica</title>
     <style>
       :root {
+        --ink: #183b3a;
+        --ink-soft: #4a635d;
+        --paper: #f8f6f0;
+        --paper-light: #fbfaf6;
+        --saffron: #e8a858;
+        --saffron-dark: #b87a2a;
         --line: #d8d8c9;
       }
       * {
@@ -27,7 +33,7 @@
         font-family: Georgia, "Times New Roman", serif;
       }
       button,
-      input {
+      select {
         font: inherit;
       }
       button {
@@ -100,18 +106,24 @@
       }
       .cover-copy {
         max-width: 540px;
-        margin: 30px 0 42px;
+        margin: 30px 0 32px;
         color: #dce8df;
         font-size: 1.18rem;
         line-height: 1.65;
       }
+      .cover-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
       .release-notice {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        align-items: center;
-        gap: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
         width: min(100%, 620px);
-        margin: -18px 0 28px;
+        margin: 0 0 28px;
         padding: 14px 16px;
         border: 1px solid rgba(228, 193, 139, 0.5);
         border-left: 3px solid var(--saffron);
@@ -125,14 +137,39 @@
           sans-serif;
       }
       .release-updates {
-        display: grid;
-        gap: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
         margin: 6px 0 0;
-        padding-left: 18px;
+        padding: 0;
+        list-style: none;
+      }
+      .release-group {
+        display: grid;
+        gap: 6px;
+      }
+      .release-group + .release-group {
+        padding-top: 10px;
+        border-top: 1px solid rgba(220, 232, 223, 0.24);
+      }
+      .release-group h3 {
+        margin: 0;
+        color: #f0cc91;
+        font:
+          0.74rem/1.4 Arial,
+          sans-serif;
+      }
+      .release-audio {
+        display: grid;
+        gap: 2px;
         color: #e9eee8;
         font:
-          0.84rem/1.45 Arial,
+          0.84rem/1.4 Arial,
           sans-serif;
+      }
+      .release-audio-credit {
+        color: #c4d5cd;
+        font-size: 0.74rem;
       }
       .release-notice strong {
         display: block;
@@ -141,6 +178,7 @@
         font-size: 0.94rem;
       }
       .release-dismiss {
+        align-self: flex-end;
         min-height: 40px;
         padding: 7px 11px;
         border: 1px solid rgba(220, 232, 223, 0.5);
@@ -173,8 +211,17 @@
         background: #e2a45e;
         transform: translateY(-2px);
       }
+      .secondary-button {
+        background: rgba(251, 250, 246, 0.15);
+        color: #fbfaf6;
+        border: 1px solid rgba(251, 250, 246, 0.4);
+      }
+      .secondary-button:hover {
+        background: rgba(251, 250, 246, 0.28);
+        transform: translateY(-2px);
+      }
       .cover-note {
-        margin: 24px 0 0;
+        margin: 12px 0 0;
         color: #b9cfca;
         font:
           0.84rem/1.5 Arial,
@@ -203,6 +250,11 @@
       .photo-slot {
         min-width: 0;
         margin: 0;
+        cursor: pointer;
+        transition: transform 200ms ease;
+      }
+      .photo-slot:hover {
+        transform: translateY(-4px);
       }
       .photo-slot-left {
         grid-area: left;
@@ -213,39 +265,6 @@
       .photo-slot-right {
         grid-area: right;
       }
-      .photo-placeholder {
-        display: grid;
-        min-height: 220px;
-        aspect-ratio: 4 / 5;
-        place-items: center;
-        padding: 20px;
-        border: 1px solid var(--line);
-        background-color: #e6e7dc;
-        background-image:
-          linear-gradient(135deg, rgba(24, 59, 58, 0.08) 25%, transparent 25%),
-          linear-gradient(315deg, rgba(24, 59, 58, 0.08) 25%, transparent 25%);
-        background-position:
-          0 0,
-          14px 14px;
-        background-size: 28px 28px;
-        color: var(--ink-soft);
-        text-align: center;
-      }
-      .photo-placeholder strong,
-      .photo-placeholder span {
-        display: block;
-      }
-      .photo-placeholder strong {
-        font-size: 1.2rem;
-        font-weight: 400;
-        line-height: 1.25;
-      }
-      .photo-placeholder span {
-        margin-top: 8px;
-        font:
-          0.78rem/1.5 Arial,
-          sans-serif;
-      }
       .photo-slot figcaption {
         padding-top: 10px;
         color: var(--ink-soft);
@@ -254,6 +273,16 @@
           sans-serif;
         text-align: center;
       }
+      .photo-badge {
+        display: inline-block;
+        margin-top: 4px;
+        padding: 2px 8px;
+        border-radius: 10px;
+        background: rgba(24, 59, 58, 0.08);
+        color: var(--saffron-dark);
+        font-size: 0.7rem;
+        font-weight: bold;
+      }
       .christ-image {
         display: block;
         width: 100%;
@@ -261,6 +290,8 @@
         border: 1px solid var(--line);
         background: #31534c;
         object-fit: contain;
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(24, 59, 58, 0.1);
       }
       .photo-source {
         display: block;
@@ -321,6 +352,60 @@
         justify-content: center;
         padding: 38px 0 0;
       }
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(24, 59, 58, 0.75);
+        backdrop-filter: blur(4px);
+        z-index: 10;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+      }
+      .modal-box {
+        background: var(--paper-light);
+        max-width: 600px;
+        width: 100%;
+        border-radius: 6px;
+        padding: 32px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+        border: 1px solid var(--line);
+        position: relative;
+        max-height: 85vh;
+        overflow-y: auto;
+      }
+      .modal-box h3 {
+        margin: 0 0 6px;
+        font-size: 1.8rem;
+        color: var(--ink);
+      }
+      .modal-box .modal-subtitle {
+        color: var(--saffron-dark);
+        font-style: italic;
+        margin-bottom: 18px;
+        display: block;
+      }
+      .modal-box p {
+        color: var(--ink-soft);
+        line-height: 1.65;
+        margin-bottom: 14px;
+        font-size: 1rem;
+      }
+      .modal-close-btn {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        border: none;
+        background: transparent;
+        font-size: 1.5rem;
+        color: var(--ink-soft);
+        padding: 4px 10px;
+        border-radius: 4px;
+      }
+      .modal-close-btn:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: var(--ink);
+      }
       .library {
         min-height: 100vh;
         background: var(--paper-light);
@@ -350,22 +435,51 @@
       .library-header {
         max-width: 1180px;
         margin: auto;
-        padding: 64px 24px 42px;
+        padding: 42px 24px 24px;
         border-top: 1px solid var(--line);
       }
       .library-header h2 {
         max-width: 750px;
-        margin: 0 0 18px;
-        font-size: clamp(2.4rem, 6vw, 5.4rem);
+        margin: 0 0 14px;
+        font-size: clamp(2.2rem, 5vw, 4.2rem);
         font-weight: 400;
         line-height: 0.98;
       }
       .library-header p {
         max-width: 620px;
-        margin: 0;
+        margin: 0 0 20px;
         color: var(--ink-soft);
-        font-size: 1.08rem;
-        line-height: 1.65;
+        font-size: 1.05rem;
+        line-height: 1.6;
+      }
+      .filter-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px dashed var(--line);
+      }
+      .author-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .filter-btn {
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink-soft);
+        padding: 9px 18px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        transition: all 180ms ease;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--ink);
+        color: #fff;
+        border-color: var(--ink);
       }
       .practice-grid {
         display: grid;
@@ -402,22 +516,37 @@
         font-style: italic;
       }
       .card-actions {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-top: 28px;
+        display: flex !important;
+        align-items: center !important;
+        gap: 14px !important;
+        margin-top: 28px !important;
+        visibility: visible !important;
+        opacity: 1 !important;
       }
       .listen-button {
+        display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
         flex: 1;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
         border: 0;
         border-radius: 2px;
         padding: 12px;
         background: var(--ink);
         color: #fff;
+        appearance: none;
+        -webkit-appearance: none;
+        touch-action: manipulation;
         font-weight: 700;
       }
       .listen-button:hover {
         background: #285f5b;
+      }
+      .listen-button:focus-visible {
+        outline: 3px solid var(--saffron);
+        outline-offset: 2px;
       }
       .download-button {
         width: 44px;
@@ -548,19 +677,9 @@
           width: min(100%, 180px);
           margin: auto;
         }
-        .photo-placeholder strong {
-          font-size: 0.82rem;
-          line-height: 1.15;
-        }
-        .photo-placeholder span,
         .photo-slot figcaption {
           font-size: 0.62rem;
           line-height: 1.25;
-        }
-        .photo-placeholder span {
-          margin-top: 4px;
-        }
-        .photo-slot figcaption {
           padding-top: 6px;
         }
         .photo-source {
@@ -578,7 +697,7 @@
           gap: 8px;
         }
         .library-header {
-          padding-top: 44px;
+          padding-top: 32px;
         }
         .player-inner {
           grid-template-columns: 1fr auto;
@@ -597,6 +716,7 @@
   </head>
   <body>
     <main class="shell">
+      <!-- PORTADA PRINCIPAL -->
       <section id="cover" class="cover" aria-labelledby="cover-title">
         <div class="cover-inner">
           <img
@@ -613,29 +733,48 @@
             meditación. Entra cuando quieras; cada audio está abierto para que
             sigas tu propio ritmo.
           </p>
+
+          <!-- AVISO DE NUEVAS ACTUALIZACIONES (SOLO PARA USUARIOS RECURRENTES) -->
           <aside
             id="release-notice"
             class="release-notice hidden"
-            aria-label="Nueva actualización"
+            aria-label="Nuevas actualizaciones"
             aria-live="polite"
           >
             <p>
-              <strong>Novedades desde tu última visita</strong>
+              <strong>Nuevas Actualizaciones:</strong>
             </p>
-            <ul id="release-updates" class="release-updates"></ul>
+            <div id="release-updates" class="release-updates"></div>
             <button id="release-dismiss" class="release-dismiss" type="button">
               Entendido
             </button>
           </aside>
-          <button id="before-start-button" class="primary-button" type="button">
-            Antes de comenzar... <span aria-hidden="true">→</span>
-          </button>
+
+          <!-- BOTONES DE NAVEGACIÓN EN LA PORTADA -->
+          <div class="cover-actions">
+            <button
+              id="direct-audio-button"
+              class="primary-button"
+              type="button"
+            >
+              Ir a los Audios <span aria-hidden="true">→</span>
+            </button>
+            <button
+              id="before-start-button"
+              class="secondary-button"
+              type="button"
+            >
+              Antes de comenzar...
+            </button>
+          </div>
+
           <p id="offline-status" class="cover-note" aria-live="polite">
             Preparando los audios para escuchar sin conexión.
           </p>
         </div>
       </section>
 
+      <!-- SECCIÓN ANTES DE COMENZAR -->
       <section
         id="preparation"
         class="preparation hidden"
@@ -653,15 +792,18 @@
         </nav>
         <main class="preparation-main">
           <div class="photo-grid" aria-label="Fotografías de presentación">
-            <figure class="photo-slot photo-slot-left">
+            <figure class="photo-slot photo-slot-left" data-teacher="lakhsmi">
               <img
                 class="christ-image"
                 src="images/V. M. Lakhsmi Daimon.webp"
                 alt="Retrato de Venerable Maestro Lakhsmi Daimon"
               />
-              <figcaption>V.M. Lakhsmi Daimon</figcaption>
+              <figcaption>
+                V.M. Lakhsmi Daimon
+                <span class="photo-badge">Ver Reseña</span>
+              </figcaption>
             </figure>
-            <figure class="photo-slot photo-slot-center">
+            <figure class="photo-slot photo-slot-center" data-teacher="cristo">
               <img
                 class="christ-image"
                 src="images/cristo-pantocrator-sinai.jpg"
@@ -669,6 +811,7 @@
               />
               <figcaption>
                 Jesús el Cristo
+                <span class="photo-badge">Ver Reseña</span>
                 <span class="photo-source">
                   <a
                     href="https://commons.wikimedia.org/wiki/File:Spas_vsederzhitel_sinay.jpg"
@@ -680,13 +823,16 @@
                 </span>
               </figcaption>
             </figure>
-            <figure class="photo-slot photo-slot-right">
+            <figure class="photo-slot photo-slot-right" data-teacher="samael">
               <img
                 class="christ-image"
                 src="images/V. M. Samael Aun Weor.jpg"
                 alt="Retrato de Venerable Maestro Samael Aun Weor"
               />
-              <figcaption>V.M. Samael Aun Weor</figcaption>
+              <figcaption>
+                V.M. Samael Aun Weor
+                <span class="photo-badge">Ver Reseña</span>
+              </figcaption>
             </figure>
           </div>
 
@@ -695,7 +841,8 @@
             <h2 id="preparation-title">Antes de comenzar</h2>
             <p>
               Información importante para acompañar tu recorrido por las
-              prácticas.
+              prácticas. Haz clic en las imágenes superiores para conocer la
+              reseña histórica de cada Maestro.
             </p>
           </header>
 
@@ -789,6 +936,7 @@
         </main>
       </section>
 
+      <!-- BIBLIOTECA DE AUDIOS -->
       <section
         id="library"
         class="library hidden"
@@ -804,10 +952,25 @@
           <p class="eyebrow">Biblioteca Gnóstica</p>
           <h2 id="library-title">Elige un audio y permanece presente.</h2>
           <p>
-            Todos los audios están disponibles desde el comienzo. Puedes
-            repetirlos, detenerlos y retomarlos sin seguir una secuencia.
+            Filtra por autor o maestro para explorar las prácticas de manera
+            sencilla.
           </p>
+
+          <!-- FILTROS POR AUTOR -->
+          <div class="filter-toolbar">
+            <div class="author-filters">
+              <button class="filter-btn active" data-author="all">Todos</button>
+              <button class="filter-btn" data-author="samael">
+                V.M. Samael
+              </button>
+              <button class="filter-btn" data-author="lakhsmi">
+                V.M. Lakhsmi
+              </button>
+              <button class="filter-btn" data-author="otros">Otros</button>
+            </div>
+          </div>
         </header>
+
         <div id="practice-grid" class="practice-grid" aria-live="polite"></div>
         <footer>
           Los audios se guardan en este dispositivo para acompañarte también sin
@@ -815,6 +978,7 @@
         </footer>
       </section>
 
+      <!-- REPRODUCTOR FLOTANTE -->
       <aside
         id="player-view"
         class="player-view hidden"
@@ -831,6 +995,18 @@
           </button>
         </div>
       </aside>
+
+      <!-- MODAL BIOGRAFÍA MAESTROS -->
+      <div id="teacher-modal" class="modal-backdrop hidden" aria-hidden="true">
+        <div class="modal-box">
+          <button id="modal-close" class="modal-close-btn" type="button">
+            ✕
+          </button>
+          <h3 id="modal-title">Nombre Maestro</h3>
+          <span id="modal-subtitle" class="modal-subtitle">Subtítulo</span>
+          <div id="modal-body"></div>
+        </div>
+      </div>
 
       <button
         id="back-to-top"
@@ -978,10 +1154,10 @@
           download: "Meditar en el Padre Nuestro.MP3",
         },
         {
-          title: "Mensaje Juan Capasso",
-          credit: "V.M. Lakhsmi Daimon.",
-          file: "audio/Mensaje Juan Capasso.MP3",
-          download: "Mensaje Juan Capasso.MP3",
+          title: "Mensaje de Juan Capasso",
+          credit: "Juan Capasso Pinto.",
+          file: "audio/Mensaje de Juan Capasso - Juan Capasso Pinto.MP3",
+          download: "Mensaje de Juan Capasso - Juan Capasso Pinto.MP3",
         },
         {
           title: "Mi Corazón los Distinque",
@@ -1081,6 +1257,24 @@
         },
       ];
 
+      const teacherBios = {
+        lakhsmi: {
+          title: "Venerable Maestro Lakhsmi Daimon",
+          subtitle: "Restaurador de la Enseñanza Gnóstica",
+          body: "<p>El V.M. Lakhsmi Daimon (Teófilo Bustos) consagró su vida al servicio de la humanidad y a la orientación del pueblo gnóstico. Destacó por su profunda visión espiritual y por guiar en la práctica directa de la meditación, la mística y la cristalización del Cristo Intimo en la vida diaria.</p><p>Su enseñanza enfatiza la integración viva con la Mónada Divina, la sencillez en el trabajo sobre sí mismo y el amor a la humanidad.</p>",
+        },
+        cristo: {
+          title: "Jesús el Cristo",
+          subtitle: "El Gran Kabir",
+          body: "<p>Jesús de Nazaret, el Gran Kabir, representa el prototipo del Iniciado Solar y el Salvador del mundo. Encarnó el principio Cósmico del Cristo en la Tierra, entregando a la humanidad la doctrina del Amor, el Sacrificio y la Redención Interior.</p><p>Su vida y mensaje son la piedra angular y la inspiración suprema de la ciencia de la iluminación interior gnóstica.</p>",
+        },
+        samael: {
+          title: "Venerable Maestro Samael Aun Weor",
+          subtitle: "Patriarca y Fundador del Movimiento Gnóstico Moderno",
+          body: "<p>El V.M. Samael Aun Weor (1917–1977), antropólogo y filósofo esotérico, devela la Quinta Devalación e instaura el Movimiento Gnóstico en la era moderna. Autor de más de 60 obras de esoterismo, psicología revolucionaria y Cábala.</p><p>Sintetizó el conocimiento de las antiguas escuelas de misterios para ponerlo al alcance de la humanidad contemporánea a través de los tres factores de la revolución de la conciencia.</p>",
+        },
+      };
+
       const cover = document.getElementById("cover");
       const preparation = document.getElementById("preparation");
       const library = document.getElementById("library");
@@ -1091,50 +1285,112 @@
       const playerStatus = document.getElementById("player-status");
       const backToTopButton = document.getElementById("back-to-top");
       const releaseNotice = document.getElementById("release-notice");
+      const filterButtons = document.querySelectorAll(".filter-btn");
+
       let currentPracticeIndex = -1;
+      let activeAuthorFilter = "all";
 
       const releaseHistory = [
         {
           id: "2026-09-29-doce-audios",
-          text: "Se incorporaron 12 audios con títulos nuevos y se corrigió el título Meditación con el Padre Nuestro.",
+          date: "29 de septiembre",
+          audios: [
+            ["Cambio de Pareja", "V.M. Lakhsmi Daimon."],
+            ["El Negocio Piramidal", "V.M. Lakhsmi Daimon."],
+            ["Los Extraterrestres", "V.M. Lakhsmi Daimon."],
+            ["Lucifer-Moisés", "V.M. Lakhsmi Daimon."],
+            ["Mensaje de Juan Capasso", "Juan Capasso Pinto."],
+            ["Oración Especial 1", "V.M. Lakhsmi Daimon."],
+            ["Oración Universal", "V.M. Lakhsmi Daimon."],
+            ["Práctica con Lucifer", "V.M. Lakhsmi Daimon."],
+            ["Sobre los Maestros", "V.M. Lakhsmi Daimon."],
+            ["Talismán Esotérico", "V.M. Lakhsmi Daimon."],
+            ["Trascender la Recurrencia", "V.M. Lakhsmi Daimon."],
+            ["Vencer al Diablo", "V.M. Lakhsmi Daimon."],
+          ],
         },
         {
           id: "2026-10-07-la-obra-es-imposible",
-          text: "Se agregó el audio La Obra es Imposible.",
+          date: "7 de octubre",
+          audios: [["La Obra es Imposible", "V. M. Lakhsmi Daimon."]],
         },
         {
           id: "2026-10-08-cultura-practicad",
-          text: "Se agregaron La Cultura Gnóstica de Eleuterio Martínez y Practicad.",
+          date: "8 de octubre",
+          audios: [
+            [
+              "La Cultura Gnóstica de Eleuterio Martínez",
+              "Eleuterio Martínez.",
+            ],
+            ["Practicad", "V. M. Samael Aun Weor."],
+          ],
         },
         {
           id: "2026-10-09-mantram-y-sahumerio",
-          text: "Se agregaron Mantram Belilin y Poderoso Sahumerio de Limpieza.",
+          date: "9 de octubre",
+          audios: [
+            ["Mantram Belilin", "V. M. Samael Aun Weor."],
+            ["Poderoso Sahumerio de Limpieza", "V. M. Lakhsmi Daimon."],
+          ],
+        },
+        {
+          id: "2026-10-09-mensaje-juan-capasso",
+          date: "9 de octubre",
+          audios: [["Mensaje de Juan Capasso", "Juan Capasso Pinto."]],
         },
       ];
+
       const seenReleaseNoticeKey = "peg-seen-release-id";
-      const previousReleaseNoticeKey = "peg-seen-release-notice";
       const releaseList = document.getElementById("release-updates");
+
       try {
-        const previouslySeenId =
-          localStorage.getItem(seenReleaseNoticeKey) ||
-          localStorage.getItem(previousReleaseNoticeKey);
-        const seenIndex = releaseHistory.findIndex(
-          (release) => release.id === previouslySeenId,
-        );
-        const pendingReleases =
-          seenIndex < 0 ? releaseHistory : releaseHistory.slice(seenIndex + 1);
+        const previouslySeenId = localStorage.getItem(seenReleaseNoticeKey);
+        const latestReleaseId = releaseHistory[releaseHistory.length - 1].id;
 
-        pendingReleases.forEach((release) => {
-          const item = document.createElement("li");
-          item.textContent = release.text;
-          releaseList.appendChild(item);
-        });
+        if (!previouslySeenId) {
+          localStorage.setItem(seenReleaseNoticeKey, latestReleaseId);
+          releaseNotice.classList.add("hidden");
+        } else {
+          const seenIndex = releaseHistory.findIndex(
+            (release) => release.id === previouslySeenId,
+          );
+          const pendingReleases =
+            seenIndex < 0 ? [] : releaseHistory.slice(seenIndex + 1);
 
-        if (pendingReleases.length) {
-          releaseNotice.classList.remove("hidden");
+          if (pendingReleases.length > 0) {
+            pendingReleases.forEach((release) => {
+              const group = document.createElement("section");
+              group.className = "release-group";
+
+              const date = document.createElement("h3");
+              date.textContent = release.date;
+              group.appendChild(date);
+
+              release.audios.forEach(([title, credit]) => {
+                const audio = document.createElement("div");
+                audio.className = "release-audio";
+
+                const audioTitle = document.createElement("span");
+                audioTitle.textContent = title;
+                audio.appendChild(audioTitle);
+
+                const audioCredit = document.createElement("span");
+                audioCredit.className = "release-audio-credit";
+                audioCredit.textContent = credit;
+                audio.appendChild(audioCredit);
+
+                group.appendChild(audio);
+              });
+
+              releaseList.appendChild(group);
+            });
+            releaseNotice.classList.remove("hidden");
+          } else {
+            releaseNotice.classList.add("hidden");
+          }
         }
       } catch {
-        releaseNotice.classList.remove("hidden");
+        releaseNotice.classList.add("hidden");
       }
 
       document
@@ -1144,10 +1400,36 @@
             const latestReleaseId =
               releaseHistory[releaseHistory.length - 1].id;
             localStorage.setItem(seenReleaseNoticeKey, latestReleaseId);
-            localStorage.removeItem(previousReleaseNoticeKey);
           } catch {}
           releaseNotice.classList.add("hidden");
         });
+
+      const modal = document.getElementById("teacher-modal");
+      const modalTitle = document.getElementById("modal-title");
+      const modalSubtitle = document.getElementById("modal-subtitle");
+      const modalBody = document.getElementById("modal-body");
+      const modalClose = document.getElementById("modal-close");
+
+      const openTeacherBio = (teacherKey) => {
+        const bio = teacherBios[teacherKey];
+        if (!bio) return;
+        modalTitle.textContent = bio.title;
+        modalSubtitle.textContent = bio.subtitle;
+        modalBody.innerHTML = bio.body;
+        modal.classList.remove("hidden");
+      };
+
+      document.querySelectorAll(".photo-slot").forEach((slot) => {
+        slot.addEventListener("click", () => {
+          const teacher = slot.getAttribute("data-teacher");
+          openTeacherBio(teacher);
+        });
+      });
+
+      modalClose.addEventListener("click", () => modal.classList.add("hidden"));
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) modal.classList.add("hidden");
+      });
 
       const updateBackToTopVisibility = () => {
         const preparationVisible = !preparation.classList.contains("hidden");
@@ -1196,27 +1478,63 @@
         });
       };
 
-      practices.forEach((practice, index) => {
-        const card = document.createElement("article");
-        card.className = "practice-card";
-        const downloadName =
-          practice.download || `integracion-nivel-${index + 1}.mp3`;
-        card.innerHTML = `
-          <div>
-            <h3>${practice.title}</h3>
-            <p>No busques fuera, lo que dentro de ti se encuentra.</p>
-            <p class="practice-credit">${practice.credit}</p>
-          </div>
-          <div class="card-actions">
-            <button class="listen-button" type="button">Escuchar <span aria-hidden="true">▶</span></button>
-            <a class="download-button" href="${encodeURI(practice.file)}" download="${downloadName}" aria-label="Descargar ${practice.title}" title="Descargar audio">↓</a>
-          </div>`;
-        card
-          .querySelector(".listen-button")
-          .addEventListener("click", () => playPractice(practice, index));
-        practiceGrid.appendChild(card);
+      const renderPractices = () => {
+        practiceGrid.innerHTML = "";
+
+        const filtered = practices.filter((practice) => {
+          let matchesAuthor = true;
+          const creditUpper = practice.credit.toUpperCase();
+          if (activeAuthorFilter === "samael") {
+            matchesAuthor = creditUpper.includes("SAMAEL");
+          } else if (activeAuthorFilter === "lakhsmi") {
+            matchesAuthor = creditUpper.includes("LAKHSMI");
+          } else if (activeAuthorFilter === "otros") {
+            matchesAuthor =
+              !creditUpper.includes("SAMAEL") &&
+              !creditUpper.includes("LAKHSMI");
+          }
+          return matchesAuthor;
+        });
+
+        filtered.forEach((practice) => {
+          const originalIndex = practices.findIndex(
+            (p) => p.title === practice.title,
+          );
+          const card = document.createElement("article");
+          card.className = "practice-card";
+          const downloadName = practice.download || `audio.mp3`;
+          card.innerHTML = `
+            <div>
+              <h3>${practice.title}</h3>
+              <p>No busques fuera, lo que dentro de ti se encuentra.</p>
+              <p class="practice-credit">${practice.credit}</p>
+            </div>
+            <div class="card-actions">
+              <button class="listen-button" type="button">Escuchar <span aria-hidden="true">▶</span></button>
+              <a class="download-button" href="${encodeURI(practice.file)}" download="${downloadName}" aria-label="Descargar ${practice.title}" title="Descargar audio">↓</a>
+            </div>`;
+
+          card
+            .querySelector(".listen-button")
+            .addEventListener("click", () =>
+              playPractice(practice, originalIndex),
+            );
+          practiceGrid.appendChild(card);
+        });
+      };
+
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          activeAuthorFilter = btn.getAttribute("data-author");
+          renderPractices();
+        });
       });
 
+      document
+        .getElementById("direct-audio-button")
+        .addEventListener("click", showLibrary);
       document
         .getElementById("before-start-button")
         .addEventListener("click", showPreparation);
@@ -1231,14 +1549,16 @@
         .addEventListener("click", showCover);
       document
         .querySelector("#library .brand")
-        .addEventListener("click", (event) => {
-          event.preventDefault();
+        .addEventListener("click", (e) => {
+          e.preventDefault();
           showCover();
         });
+
       document.getElementById("close-player").addEventListener("click", () => {
         audioPlayer.pause();
         playerView.classList.add("hidden");
       });
+
       audioPlayer.addEventListener("play", () => {
         playerStatus.textContent = "Reproduciendo audio";
       });
@@ -1262,6 +1582,8 @@
       backToTopButton.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
+
+      renderPractices();
 
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.addEventListener("message", (event) => {

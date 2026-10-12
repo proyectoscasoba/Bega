@@ -1,4 +1,4 @@
-const CACHE_NAME = "practicas-gnosticas-v20";
+const CACHE_NAME = "practicas-gnosticas-v21";
 const APP_SHELL = ["./", "index.html", "manifest.json", "images/cristo-pantocrator-sinai.jpg", "images/logos.jfif", "images/V. M. Lakhsmi Daimon.webp", "images/V. M. Samael Aun Weor.jpg"];
 const AUDIO_ASSETS = [
   "audio/Asistencia de la Monada Divina.MP3",
@@ -23,7 +23,7 @@ const AUDIO_ASSETS = [
   "audio/Matrimonios.MP3",
   "audio/Meditacion con el Padre Nuestro.MP3",
   "audio/Meditar en el Padre Nuestro.MP3",
-  "audio/Mensaje Juan Capasso.MP3",
+  "audio/Mensaje de Juan Capasso - Juan Capasso Pinto.MP3",
   "audio/Mi Corazon los Distinque.MP3",
   "audio/Nada es Regalado.MP3",
   "audio/Oracion a la Divina Madre.MP3",
