@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#183b3a" />
+    <meta name="theme-color" content="#132a27" />
     <meta
       name="description"
       content="Audios esotéricos gnósticos para la interiorización y la meditación."
@@ -66,7 +66,7 @@
         overflow: hidden;
       }
 
-      /* PORTADA */
+      /* PORTADA MEJORADA VISUALMENTE */
       .cover {
         min-height: 100vh;
         display: grid;
@@ -75,10 +75,10 @@
         background:
           radial-gradient(
             circle at 80% 15%,
-            rgba(209, 139, 69, 0.22),
-            transparent 28%
+            rgba(232, 168, 88, 0.18),
+            transparent 30%
           ),
-          linear-gradient(125deg, #122b2a 0%, #183b3a 54%, #355348 100%);
+          linear-gradient(135deg, #0d1e1c 0%, #132a27 50%, #20403b 100%);
         color: #fbfaf6;
         position: relative;
       }
@@ -86,7 +86,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        opacity: 0.15;
+        opacity: 0.12;
         background-image: linear-gradient(
           30deg,
           transparent 48%,
@@ -139,7 +139,7 @@
         margin-bottom: 24px;
       }
 
-      /* BOTÓN CONTINUAR REPRODUCCIÓN */
+      /* BANNER CONTINUAR REPRODUCCIÓN */
       .resume-banner {
         display: flex;
         align-items: center;
@@ -150,7 +150,7 @@
         padding: 12px 16px;
         border: 1px solid rgba(232, 168, 88, 0.6);
         border-radius: 4px;
-        background: rgba(24, 59, 58, 0.6);
+        background: rgba(19, 42, 39, 0.7);
         backdrop-filter: blur(4px);
       }
       .resume-info {
@@ -298,7 +298,7 @@
           sans-serif;
       }
 
-      /* SECCIÓN PREPARACIÓN Y BIBLIOTECA */
+      /* PREPARACIÓN Y BIBLIOTECA */
       .preparation,
       .library {
         min-height: 100vh;
@@ -1531,7 +1531,6 @@
       let activeAuthorFilter = "all";
       let isLibraryCached = false;
 
-      // FAVORITOS Y ÚLTIMO AUDIO GUARDADO
       const FAVS_KEY = "peg-favorite-practices";
       const LAST_AUDIO_KEY = "peg-last-played-practice";
       const THEME_KEY = "peg-app-theme";
@@ -1555,7 +1554,6 @@
         renderPractices();
       };
 
-      // MODO NOCTURNO / CLARO
       const applyTheme = (theme) => {
         if (theme === "dark") {
           document.body.classList.add("dark-theme");
@@ -1588,7 +1586,6 @@
         });
       });
 
-      // VERIFICAR ÚLTIMO AUDIO REPRODUCIDO PARA EL BANNER
       const checkLastPlayed = () => {
         try {
           const lastIndex = localStorage.getItem(LAST_AUDIO_KEY);
@@ -1604,7 +1601,6 @@
         } catch {}
       };
 
-      // HISTORIAL DE ACTUALIZACIONES
       const releaseHistory = [
         {
           id: "2026-09-29-doce-audios",
@@ -1724,7 +1720,6 @@
           releaseNotice.classList.add("hidden");
         });
 
-      // MODAL RESEÑAS DE MAESTROS
       const modal = document.getElementById("teacher-modal");
       const modalTitle = document.getElementById("modal-title");
       const modalSubtitle = document.getElementById("modal-subtitle");
@@ -1752,7 +1747,6 @@
         if (e.target === modal) modal.classList.add("hidden");
       });
 
-      // BOTÓN VOLVER ARRIBA Y NAVEGACIÓN
       const updateBackToTopVisibility = () => {
         const preparationVisible = !preparation.classList.contains("hidden");
         const libraryVisible = !library.classList.contains("hidden");
@@ -1790,10 +1784,13 @@
         updateBackToTopVisibility();
       };
 
-      // REPRODUCTOR FLOTANTE Y CONTROL DE VELOCIDAD
+      // REPRODUCTOR CON ENCODING DE RUTA SEGURO
       const playPractice = (practice, practiceIndex) => {
         currentPracticeIndex = practiceIndex;
-        audioPlayer.src = encodeURI(practice.file);
+
+        // Garantiza que caracteres especiales y espacios no rompan la reproduccion
+        const safePath = encodeURI(practice.file);
+        audioPlayer.src = safePath;
         audioPlayer.playbackRate = parseFloat(speedSelect.value || 1.0);
         playerTitle.textContent = practice.title;
         playerStatus.textContent = "Reproduciendo audio";
@@ -1803,7 +1800,8 @@
           localStorage.setItem(LAST_AUDIO_KEY, practiceIndex.toString());
         } catch {}
 
-        audioPlayer.play().catch(() => {
+        audioPlayer.play().catch((err) => {
+          console.error("Error al reproducir:", err);
           playerStatus.textContent = "Pulsa reproducir para comenzar";
         });
       };
@@ -1812,7 +1810,6 @@
         audioPlayer.playbackRate = parseFloat(e.target.value);
       });
 
-      // RENDERIZADO Y FILTRADO DE TARJETAS
       const renderPractices = () => {
         practiceGrid.innerHTML = "";
         const favs = getFavorites();
@@ -1890,7 +1887,6 @@
         });
       });
 
-      // EVENTOS DE NAVEGACIÓN
       document
         .getElementById("direct-audio-button")
         .addEventListener("click", showLibrary);
@@ -1941,11 +1937,9 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
-      // INICIALIZACIÓN
       checkLastPlayed();
       renderPractices();
 
-      // SERVICE WORKER
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.addEventListener("message", (event) => {
           if (event.data?.type !== "AUDIO_CACHE_PROGRESS") return;
