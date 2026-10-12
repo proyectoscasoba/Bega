@@ -106,7 +106,7 @@
       }
       .cover-copy {
         max-width: 540px;
-        margin: 30px 0 32px;
+        margin: 24px 0 24px;
         color: #dce8df;
         font-size: 1.18rem;
         line-height: 1.65;
@@ -123,7 +123,7 @@
         align-items: stretch;
         gap: 12px;
         width: min(100%, 620px);
-        margin: 0 0 28px;
+        margin: 0 0 24px;
         padding: 14px 16px;
         border: 1px solid rgba(228, 193, 139, 0.5);
         border-left: 3px solid var(--saffron);
@@ -143,6 +143,8 @@
         margin: 6px 0 0;
         padding: 0;
         list-style: none;
+        max-height: 150px;
+        overflow-y: auto;
       }
       .release-group {
         display: grid;
@@ -179,8 +181,8 @@
       }
       .release-dismiss {
         align-self: flex-end;
-        min-height: 40px;
-        padding: 7px 11px;
+        min-height: 36px;
+        padding: 6px 10px;
         border: 1px solid rgba(220, 232, 223, 0.5);
         border-radius: 2px;
         background: transparent;
@@ -734,7 +736,7 @@
             sigas tu propio ritmo.
           </p>
 
-          <!-- AVISO DE NUEVAS ACTUALIZACIONES (SOLO PARA USUARIOS RECURRENTES) -->
+          <!-- AVISO DE NUEVAS ACTUALIZACIONES (SOLO PARA USUARIOS RECURRENTES CON NOVEDADES) -->
           <aside
             id="release-notice"
             class="release-notice hidden"
@@ -1118,6 +1120,12 @@
           download: "La Recurrencia.MP3",
         },
         {
+          title: "Las Peores Adversidades",
+          credit: "V. M. Samael Aun Weor.",
+          file: "audio/Las Peores Adversidades.MP3",
+          download: "Las Peores Adversidades.MP3",
+        },
+        {
           title: "Los Extraterrestres",
           credit: "V.M. Lakhsmi Daimon.",
           file: "audio/Los Extraterrestres.MP3",
@@ -1338,11 +1346,18 @@
           date: "9 de octubre",
           audios: [["Mensaje de Juan Capasso", "Juan Capasso Pinto."]],
         },
+        {
+          id: "2026-10-12-las-peores-adversidades",
+          date: "12 de octubre",
+          audios: [["Las Peores Adversidades", "V. M. Samael Aun Weor."]],
+        },
       ];
 
       const seenReleaseNoticeKey = "peg-seen-release-id";
       const releaseList = document.getElementById("release-updates");
 
+      // LÓGICA INTELIGENTE DE ACTUALIZACIONES:
+      // Al haber un ID más reciente ("2026-10-12-las-peores-adversidades"), saltará automáticamente el aviso en la portada.
       try {
         const previouslySeenId = localStorage.getItem(seenReleaseNoticeKey);
         const latestReleaseId = releaseHistory[releaseHistory.length - 1].id;
