@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#132a27" />
+    <meta name="theme-color" content="#183b3a" />
     <meta
       name="description"
       content="Audios esotéricos gnósticos para la interiorización y la meditación."
@@ -65,6 +65,7 @@
         overflow: hidden;
       }
 
+      /* PORTADA */
       .cover {
         min-height: 100vh;
         display: grid;
@@ -132,10 +133,11 @@
       .cover-actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 14px;
         margin-bottom: 24px;
       }
 
+      /* BANNER DE REANUDACIÓN */
       .resume-banner {
         display: flex;
         align-items: center;
@@ -178,6 +180,7 @@
         white-space: nowrap;
       }
 
+      /* AVISO DE ACTUALIZACIONES */
       .release-notice {
         display: flex;
         flex-direction: column;
@@ -238,31 +241,45 @@
         align-self: flex-end;
         padding: 6px 10px;
         border: 1px solid rgba(220, 232, 223, 0.5);
+        border-radius: 2px;
         background: transparent;
         color: #fbfaf6;
         font:
           0.76rem Arial,
           sans-serif;
       }
+      .release-dismiss:hover {
+        background: rgba(251, 250, 246, 0.12);
+      }
 
+      /* BOTONES */
       .primary-button,
       .secondary-button {
         border: 0;
         border-radius: 2px;
-        padding: 14px 20px;
+        padding: 15px 22px;
         transition:
           transform 180ms ease,
-          background 180ms ease;
+          background 180ms ease,
+          color 180ms ease;
       }
       .primary-button {
         background: var(--saffron);
         color: #1b302d;
         font-weight: 700;
       }
+      .primary-button:hover {
+        background: #e2a45e;
+        transform: translateY(-2px);
+      }
       .secondary-button {
         background: rgba(251, 250, 246, 0.15);
         color: #fbfaf6;
         border: 1px solid rgba(251, 250, 246, 0.4);
+      }
+      .secondary-button:hover {
+        background: rgba(251, 250, 246, 0.28);
+        transform: translateY(-2px);
       }
       .cover-note {
         margin: 12px 0 0;
@@ -272,6 +289,7 @@
           sans-serif;
       }
 
+      /* BARRA SUPERIOR Y NAVEGACIÓN */
       .preparation,
       .library {
         min-height: 100vh;
@@ -319,12 +337,14 @@
         background: transparent;
         color: var(--ink-soft);
         text-decoration: underline;
+        text-underline-offset: 4px;
       }
 
+      /* PREPARACIÓN / ANTES DE COMENZAR */
       .preparation-main {
         max-width: 1180px;
         margin: auto;
-        padding: 24px 24px 0;
+        padding: 24px 24px 56px;
       }
       .photo-grid {
         display: grid;
@@ -339,6 +359,10 @@
       .photo-slot {
         margin: 0;
         cursor: pointer;
+        transition: transform 200ms ease;
+      }
+      .photo-slot:hover {
+        transform: translateY(-4px);
       }
       .photo-slot-left {
         grid-area: left;
@@ -375,6 +399,15 @@
         background: #31534c;
         object-fit: contain;
         border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(24, 59, 58, 0.1);
+      }
+      .photo-source {
+        display: block;
+        margin-top: 5px;
+        font-size: 0.7rem;
+      }
+      .photo-source a {
+        color: var(--ink-soft);
       }
 
       .preparation-header {
@@ -385,6 +418,7 @@
         margin: 0 0 14px;
         font-size: clamp(2.4rem, 6vw, 4.6rem);
         font-weight: 400;
+        line-height: 1;
       }
       .preparation-content {
         max-width: 820px;
@@ -405,12 +439,29 @@
           0.78rem Arial,
           sans-serif;
       }
+      .information-item h3 {
+        margin: 0 0 9px;
+        font-size: 1.55rem;
+        font-weight: 400;
+      }
+      .information-item p {
+        margin: 0 0 10px;
+        color: var(--ink-soft);
+        line-height: 1.65;
+      }
+      .information-item p:last-child {
+        margin-bottom: 0;
+      }
+      .information-item a {
+        color: var(--saffron-dark);
+      }
       .enter-audios {
         display: flex;
         justify-content: center;
         padding: 38px 0 0;
       }
 
+      /* MODAL BIOGRAFÍAS */
       .modal-backdrop {
         position: fixed;
         inset: 0;
@@ -427,11 +478,28 @@
         width: 100%;
         border-radius: 6px;
         padding: 32px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
         border: 1px solid var(--line);
         position: relative;
         max-height: 85vh;
         overflow-y: auto;
         color: var(--ink);
+      }
+      .modal-box h3 {
+        margin: 0 0 6px;
+        font-size: 1.8rem;
+      }
+      .modal-box .modal-subtitle {
+        color: var(--saffron-dark);
+        font-style: italic;
+        margin-bottom: 18px;
+        display: block;
+      }
+      .modal-box p {
+        color: var(--ink-soft);
+        line-height: 1.65;
+        margin-bottom: 14px;
+        font-size: 1rem;
       }
       .modal-close-btn {
         position: absolute;
@@ -441,8 +509,15 @@
         background: transparent;
         font-size: 1.5rem;
         color: var(--ink-soft);
+        padding: 4px 10px;
+        border-radius: 4px;
+      }
+      .modal-close-btn:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: var(--ink);
       }
 
+      /* BIBLIOTECA DE AUDIOS */
       .library-header {
         max-width: 1180px;
         margin: auto;
@@ -453,6 +528,7 @@
         margin: 0 0 14px;
         font-size: clamp(2.2rem, 5vw, 4.2rem);
         font-weight: 400;
+        line-height: 0.98;
       }
       .filter-toolbar {
         display: flex;
@@ -475,13 +551,16 @@
         padding: 8px 16px;
         border-radius: 20px;
         font-size: 0.88rem;
+        transition: all 180ms ease;
       }
+      .filter-btn:hover,
       .filter-btn.active {
         background: var(--ink);
         color: var(--paper-light);
         border-color: var(--ink);
       }
 
+      /* TARJETAS DE PRÁCTICA */
       .practice-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
@@ -499,6 +578,7 @@
         border: 1px solid var(--line);
         background: var(--card-bg);
         border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
       }
       .card-top {
         display: flex;
@@ -525,6 +605,7 @@
         margin: 0;
         color: var(--ink-soft);
         font-size: 0.95rem;
+        line-height: 1.5;
       }
       .practice-card .practice-credit {
         margin-top: 8px;
@@ -541,7 +622,7 @@
       }
       .listen-button {
         flex: 1;
-        min-height: 42px;
+        min-height: 44px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -553,9 +634,12 @@
         font-weight: 700;
         font-size: 0.92rem;
       }
+      .listen-button:hover {
+        opacity: 0.9;
+      }
       .download-button {
-        width: 42px;
-        height: 42px;
+        width: 44px;
+        height: 44px;
         border: 1px solid var(--line);
         border-radius: 2px;
         background: transparent;
@@ -563,9 +647,14 @@
         font-size: 1.2rem;
         text-align: center;
         text-decoration: none;
-        line-height: 40px;
+        line-height: 42px;
+      }
+      .download-button:hover {
+        border-color: var(--saffron);
+        color: var(--saffron-dark);
       }
 
+      /* REPRODUCTOR FLOTANTE */
       .player-view {
         position: fixed;
         inset: auto 0 0;
@@ -629,11 +718,16 @@
       }
       .close-player {
         border: 1px solid #789893;
+        border-radius: 2px;
         background: transparent;
         color: #fff;
         padding: 8px 12px;
       }
+      .close-player:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
 
+      /* BOTÓN IR ARRIBA Y PIE DE PÁGINA */
       .back-to-top {
         position: fixed;
         right: 22px;
@@ -646,6 +740,7 @@
         background: var(--paper-light);
         color: var(--ink);
         font-size: 1.4rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       }
       footer {
         padding: 28px 24px 120px;
@@ -656,7 +751,29 @@
           sans-serif;
       }
 
+      /* RESPONSIVO */
       @media (max-width: 768px) {
+        .cover h1 {
+          font-size: clamp(3.1rem, 16vw, 5.3rem);
+        }
+        .photo-grid {
+          grid-template-areas: "left center right";
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          align-items: start;
+          gap: 8px;
+        }
+        .photo-slot figcaption {
+          font-size: 0.65rem;
+          line-height: 1.2;
+          padding-top: 6px;
+        }
+        .photo-source {
+          font-size: 0.58rem;
+        }
+        .information-item {
+          grid-template-columns: 34px minmax(0, 1fr);
+          gap: 8px;
+        }
         .player-inner {
           grid-template-columns: 1fr auto;
           gap: 10px 12px;
@@ -672,17 +789,22 @@
         .close-player {
           display: none;
         }
+        .back-to-top {
+          right: 16px;
+          bottom: 142px;
+        }
       }
     </style>
   </head>
   <body>
-    <main class="shell">
+    <div class="shell">
+      <!-- PORTADA PRINCIPAL -->
       <section id="cover" class="cover" aria-labelledby="cover-title">
         <div class="cover-inner">
           <img
             class="cover-logo"
-            src="images/logos.jfif"
-            alt="Emblema"
+            src="images/logos.png"
+            alt="Emblema de la Iglesia Gnóstica Cristiana Universal"
             width="88"
             height="88"
           />
@@ -690,9 +812,11 @@
           <h1 id="cover-title">Biblioteca<br />Esotérica<br />Gnóstica</h1>
           <p class="cover-copy">
             Audios orientados para la interiorización, la integración y la
-            meditación.
+            meditación. Entra cuando quieras; cada audio está abierto para que
+            sigas tu propio ritmo.
           </p>
 
+          <!-- BANNER CONTINUAR ESCUCHANDO -->
           <div id="resume-banner" class="resume-banner hidden">
             <div class="resume-info">
               <span>Continuar escuchando:</span>
@@ -703,7 +827,13 @@
             </button>
           </div>
 
-          <aside id="release-notice" class="release-notice hidden">
+          <!-- AVISO DE NUEVAS ACTUALIZACIONES -->
+          <aside
+            id="release-notice"
+            class="release-notice hidden"
+            aria-label="Nuevas actualizaciones"
+            aria-live="polite"
+          >
             <p><strong>Nuevas Actualizaciones:</strong></p>
             <div id="release-updates" class="release-updates"></div>
             <button id="release-dismiss" class="release-dismiss" type="button">
@@ -711,13 +841,14 @@
             </button>
           </aside>
 
+          <!-- ACCIONES DE PORTADA -->
           <div class="cover-actions">
             <button
               id="direct-audio-button"
               class="primary-button"
               type="button"
             >
-              Ir a los Audios →
+              Ir a los Audios <span aria-hidden="true">→</span>
             </button>
             <button
               id="before-start-button"
@@ -728,17 +859,26 @@
             </button>
           </div>
 
-          <p id="offline-status" class="cover-note">
+          <p id="offline-status" class="cover-note" aria-live="polite">
             Preparando los audios para escuchar sin conexión.
           </p>
         </div>
       </section>
 
-      <section id="preparation" class="preparation hidden">
-        <nav class="topbar">
+      <!-- SECCIÓN ANTES DE COMENZAR -->
+      <section
+        id="preparation"
+        class="preparation hidden"
+        aria-labelledby="preparation-title"
+      >
+        <nav class="topbar" aria-label="Navegación previa">
           <a class="brand" href="#cover">PEG</a>
           <div class="topbar-right">
-            <button class="theme-toggle-btn" type="button">
+            <button
+              class="theme-toggle-btn"
+              type="button"
+              aria-label="Cambiar tema"
+            >
               <span class="theme-icon">🌙</span>
               <span class="theme-text">Modo Noche</span>
             </button>
@@ -751,13 +891,13 @@
             </button>
           </div>
         </nav>
-        <main class="preparation-main">
-          <div class="photo-grid">
+        <div class="preparation-main">
+          <div class="photo-grid" aria-label="Fotografías de presentación">
             <figure class="photo-slot photo-slot-left" data-teacher="lakhsmi">
               <img
                 class="christ-image"
                 src="images/V. M. Lakhsmi Daimon.jpeg"
-                alt="V.M. Lakhsmi Daimon"
+                alt="Retrato del V.M. Lakhsmi Daimon"
               />
               <figcaption>
                 V.M. Lakhsmi Daimon <span class="photo-badge">Ver Reseña</span>
@@ -767,17 +907,26 @@
               <img
                 class="christ-image"
                 src="images/cristo-pantocrator-sinai.jpg"
-                alt="Jesús el Cristo"
+                alt="Jesús el Cristo Pantocrátor"
               />
               <figcaption>
                 Jesús el Cristo <span class="photo-badge">Ver Reseña</span>
+                <span class="photo-source">
+                  <a
+                    href="https://commons.wikimedia.org/wiki/File:Spas_vsederzhitel_sinay.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Wikimedia Commons
+                  </a>
+                </span>
               </figcaption>
             </figure>
             <figure class="photo-slot photo-slot-right" data-teacher="samael">
               <img
                 class="christ-image"
                 src="images/V. M. Samael Aun Weor.jpg"
-                alt="V.M. Samael Aun Weor"
+                alt="Retrato del V.M. Samael Aun Weor"
               />
               <figcaption>
                 V.M. Samael Aun Weor <span class="photo-badge">Ver Reseña</span>
@@ -787,10 +936,11 @@
 
           <header class="preparation-header">
             <p class="eyebrow">Orientación para el visitante</p>
-            <h2>Antes de comenzar</h2>
+            <h2 id="preparation-title">Antes de comenzar</h2>
             <p>
               Información importante para acompañar tu recorrido por las
-              prácticas.
+              prácticas. Haz clic en las imágenes superiores para conocer la
+              reseña de cada Maestro.
             </p>
           </header>
 
@@ -798,10 +948,15 @@
             <article class="information-item">
               <p class="information-number">01</p>
               <div>
-                <h3>¿Para quién está pensada esta biblioteca?</h3>
+                <h3>
+                  ¿Para quién está pensada esta biblioteca esotérica gnóstica?
+                </h3>
                 <p>
                   Para todo inquieto buscador, amante de la verdad y de los
-                  misterios ocultos.
+                  misterios ocultos, no solo en los confines del inalterable e
+                  infinito universo exterior, sino también en la búsqueda
+                  interior de las profundidades de sí mismo, a través de la
+                  milenaria ciencia de la meditación interior profunda.
                 </p>
               </div>
             </article>
@@ -810,8 +965,58 @@
               <div>
                 <h3>¿Qué tipo de prácticas encontrarás?</h3>
                 <p>
-                  Fragmentos de convivencias y ejercicios compartidos por los
-                  Maestros.
+                  Los audios son variados. La gran mayoría corresponde a
+                  fragmentos de convivencias en las que los Venerables Maestros
+                  Samael Aun Weor y Lakhsmi Daimon compartieron sus enseñanzas.
+                  En ellos hay momentos de integración, reflexión, oración y
+                  meditación que invitan al buscador a internarse en sí mismo y
+                  buscar su propio Ser Interior.
+                </p>
+                <p>
+                  También encontrarás audios y ejercicios específicos
+                  compartidos por otros hermanos durante convivencias
+                  especiales. Cada audio lleva un nombre basado en el tema
+                  principal tratado.
+                </p>
+              </div>
+            </article>
+            <article class="information-item">
+              <p class="information-number">03</p>
+              <div>
+                <h3>Nota importante</h3>
+                <p>
+                  Esta aplicación y su biblioteca no buscan competir con ninguna
+                  página oficial de la Santa Iglesia Gnóstica Cristiana
+                  Universal Samael Aun Weor Federada, ni con otros espacios de
+                  difusión de la Doctrina Gnóstica. El contenido aquí planteado
+                  es para toda la humanidad.
+                </p>
+              </div>
+            </article>
+            <article class="information-item">
+              <p class="information-number">04</p>
+              <div>
+                <h3>Uso de la aplicación</h3>
+                <p>
+                  Puedes descargar la aplicación en tu móvil y usarla sin
+                  conexión a internet después de preparar la biblioteca. También
+                  puedes descargar los audios. La reproducción continúa con el
+                  siguiente audio; puedes pausarla, cerrarla o elegir otro de la
+                  lista. Se recomienda escucharlos en secuencia lógica.
+                </p>
+              </div>
+            </article>
+            <article class="information-item">
+              <p class="information-number">05</p>
+              <div>
+                <h3>Contacto</h3>
+                <p>
+                  Para comunicarte con el responsable, aportar un audio o
+                  compartir una práctica que contribuya a este proyecto, puedes
+                  escribir a
+                  <a href="mailto:carlosasosab@gmail.com"
+                    >carlosasosab@gmail.com</a
+                  >.
                 </p>
               </div>
             </article>
@@ -823,17 +1028,26 @@
               class="primary-button"
               type="button"
             >
-              Entrar a los Audios →
+              Entrar a los Audios <span aria-hidden="true">→</span>
             </button>
           </div>
-        </main>
+        </div>
       </section>
 
-      <section id="library" class="library hidden">
-        <nav class="topbar">
+      <!-- BIBLIOTECA DE AUDIOS -->
+      <section
+        id="library"
+        class="library hidden"
+        aria-labelledby="library-title"
+      >
+        <nav class="topbar" aria-label="Navegación principal">
           <a class="brand" href="#cover">PEG</a>
           <div class="topbar-right">
-            <button class="theme-toggle-btn" type="button">
+            <button
+              class="theme-toggle-btn"
+              type="button"
+              aria-label="Cambiar tema"
+            >
               <span class="theme-icon">🌙</span>
               <span class="theme-text">Modo Noche</span>
             </button>
@@ -844,7 +1058,7 @@
         </nav>
         <header class="library-header">
           <p class="eyebrow">Biblioteca Gnóstica</p>
-          <h2>Elige un audio y permanece presente.</h2>
+          <h2 id="library-title">Elige un audio y permanece presente.</h2>
           <div class="filter-toolbar">
             <div class="author-filters">
               <button class="filter-btn active" data-author="all">Todos</button>
@@ -860,14 +1074,19 @@
           </div>
         </header>
 
-        <div id="practice-grid" class="practice-grid"></div>
+        <div id="practice-grid" class="practice-grid" aria-live="polite"></div>
         <footer>
           Los audios se guardan en este dispositivo para acompañarte también sin
           conexión.
         </footer>
       </section>
 
-      <aside id="player-view" class="player-view hidden">
+      <!-- REPRODUCTOR FLOTANTE -->
+      <aside
+        id="player-view"
+        class="player-view hidden"
+        aria-label="Reproductor de audio"
+      >
         <div class="player-inner">
           <div class="player-label">
             <strong id="player-title">Práctica</strong>
@@ -875,7 +1094,11 @@
           </div>
           <audio id="audio-player" controls preload="metadata"></audio>
           <div class="speed-control">
-            <select id="speed-select" class="speed-select">
+            <select
+              id="speed-select"
+              class="speed-select"
+              aria-label="Velocidad de reproducción"
+            >
               <option value="0.8">0.8x</option>
               <option value="1.0" selected>1.0x</option>
               <option value="1.25">1.25x</option>
@@ -888,24 +1111,36 @@
         </div>
       </aside>
 
-      <div id="teacher-modal" class="modal-backdrop hidden">
+      <!-- MODAL BIOGRAFÍAS MAESTROS -->
+      <div id="teacher-modal" class="modal-backdrop hidden" aria-hidden="true">
         <div class="modal-box">
-          <button id="modal-close" class="modal-close-btn" type="button">
+          <button
+            id="modal-close"
+            class="modal-close-btn"
+            type="button"
+            aria-label="Cerrar modal"
+          >
             ✕
           </button>
-          <h3 id="modal-title"></h3>
-          <span id="modal-subtitle"></span>
+          <h3 id="modal-title">Nombre Maestro</h3>
+          <span id="modal-subtitle" class="modal-subtitle">Subtítulo</span>
           <div id="modal-body"></div>
         </div>
       </div>
 
-      <button id="back-to-top" class="back-to-top hidden" type="button">
+      <button
+        id="back-to-top"
+        class="back-to-top hidden"
+        type="button"
+        aria-label="Volver arriba"
+        title="Volver arriba"
+      >
         ↑
       </button>
-    </main>
+    </div>
 
     <script>
-      // MATRIZ DE AUDIOS CON RUTAS Y EXTENSIONES CORREGIDAS
+      // MATRIZ COMPLETA DE PRÁCTICAS Y AUDIOS
       const practices = [
         {
           title: "Asistencia de la Mónada Divina",
@@ -1153,20 +1388,71 @@
         lakhsmi: {
           title: "Venerable Maestro Lakhsmi Daimon",
           subtitle: "Restaurador de la Enseñanza Gnóstica",
-          body: "<p>El V.M. Lakhsmi Daimon consagró su vida al servicio de la humanidad y a la orientación del pueblo gnóstico.</p>",
+          body: "<p>El V.M. Lakhsmi Daimon (Teófilo Bustos) consagró su vida al servicio de la humanidad y a la orientación del pueblo gnóstico. Destacó por su profunda visión espiritual y por guiar en la práctica directa de la meditación, la mística y la cristalización del Cristo Íntimo en la vida diaria.</p><p>Su enseñanza enfatiza la integración viva con la Mónada Divina, la sencillez en el trabajo sobre sí mismo y el amor a la humanidad.</p>",
         },
         cristo: {
           title: "Jesús el Cristo",
           subtitle: "El Gran Kabir",
-          body: "<p>Jesús de Nazaret representa el prototipo del Iniciado Solar y el Salvador del mundo.</p>",
+          body: "<p>Jesús de Nazaret, el Gran Kabir, representa el prototipo del Iniciado Solar y el Salvador del mundo. Encarnó el principio Cósmico del Cristo en la Tierra, entregando a la humanidad la doctrina del Amor, el Sacrificio y la Redención Interior.</p><p>Su vida y mensaje son la piedra angular y la inspiración suprema de la ciencia de la iluminación interior gnóstica.</p>",
         },
         samael: {
           title: "Venerable Maestro Samael Aun Weor",
-          subtitle: "Patriarca del Movimiento Gnóstico",
-          body: "<p>El V.M. Samael Aun Weor instaura el Movimiento Gnóstico en la era moderna.</p>",
+          subtitle: "Patriarca y Fundador del Movimiento Gnóstico Moderno",
+          body: "<p>El V.M. Samael Aun Weor (1917–1977), antropólogo y filósofo esotérico, devela la Quinta Develación e instaura el Movimiento Gnóstico en la era moderna. Autor de más de 60 obras de esoterismo, psicología revolucionaria y Cábala.</p><p>Sintetizó el conocimiento de las antiguas escuelas de misterios para ponerlo al alcance de la humanidad contemporánea a través de los tres factores de la revolución de la conciencia.</p>",
         },
       };
 
+      const releaseHistory = [
+        {
+          id: "2026-09-29-doce-audios",
+          date: "29 de septiembre",
+          audios: [
+            ["Cambio de Pareja", "V.M. Lakhsmi Daimon."],
+            ["El Negocio Piramidal", "V.M. Lakhsmi Daimon."],
+            ["Los Extraterrestres", "V.M. Lakhsmi Daimon."],
+            ["Lucifer-Moisés", "V.M. Lakhsmi Daimon."],
+            ["Mensaje de Juan Capasso", "Juan Capasso Pinto."],
+            ["Oración Especial 1", "V.M. Lakhsmi Daimon."],
+            ["Oración Universal", "V.M. Lakhsmi Daimon."],
+            ["Práctica con Lucifer", "V.M. Lakhsmi Daimon."],
+            ["Sobre los Maestros", "V.M. Lakhsmi Daimon."],
+            ["Talismán Esotérico", "V.M. Lakhsmi Daimon."],
+            ["Trascender la Recurrencia", "V.M. Lakhsmi Daimon."],
+            ["Vencer al Diablo", "V.M. Lakhsmi Daimon."],
+          ],
+        },
+        {
+          id: "2026-10-07-la-obra-es-imposible",
+          date: "7 de octubre",
+          audios: [["La Obra es Imposible", "V. M. Lakhsmi Daimon."]],
+        },
+        {
+          id: "2026-10-08-cultura-practicad",
+          date: "8 de octubre",
+          audios: [
+            [
+              "La Cultura Gnóstica de Eleuterio Martínez",
+              "Eleuterio Martínez.",
+            ],
+            ["Practicad", "V. M. Samael Aun Weor."],
+          ],
+        },
+        {
+          id: "2026-10-09-mantram-y-sahumerio",
+          date: "9 de octubre",
+          audios: [
+            ["Mantram Belilin", "V. M. Samael Aun Weor."],
+            ["Poderoso Sahumerio de Limpieza", "V. M. Lakhsmi Daimon."],
+          ],
+        },
+        {
+          id: "2026-10-12-las-peores-adversidades",
+          date: "12 de octubre",
+          audios: [["Las Peores Adversidades", "V. M. Samael Aun Weor."]],
+        },
+      ];
+
+      // ELEMENTOS DEL DOM
       const cover = document.getElementById("cover");
       const preparation = document.getElementById("preparation");
       const library = document.getElementById("library");
@@ -1175,11 +1461,13 @@
       const audioPlayer = document.getElementById("audio-player");
       const playerTitle = document.getElementById("player-title");
       const playerStatus = document.getElementById("player-status");
-      const backToTopButton = document.getElementById("back-to-top");
       const speedSelect = document.getElementById("speed-select");
+      const backToTopButton = document.getElementById("back-to-top");
       const resumeBanner = document.getElementById("resume-banner");
       const resumeTitle = document.getElementById("resume-title");
       const resumeBtn = document.getElementById("resume-btn");
+      const releaseNotice = document.getElementById("release-notice");
+      const releaseList = document.getElementById("release-updates");
       const filterButtons = document.querySelectorAll(".filter-btn");
 
       let currentPracticeIndex = -1;
@@ -1188,7 +1476,9 @@
       const FAVS_KEY = "peg-favorite-practices";
       const LAST_AUDIO_KEY = "peg-last-played-practice";
       const THEME_KEY = "peg-app-theme";
+      const SEEN_RELEASE_KEY = "peg-seen-release-id";
 
+      // FAVORITOS Y TEMA
       const getFavorites = () => {
         try {
           return JSON.parse(localStorage.getItem(FAVS_KEY)) || [];
@@ -1196,6 +1486,7 @@
           return [];
         }
       };
+
       const toggleFavorite = (title) => {
         let favs = getFavorites();
         favs = favs.includes(title)
@@ -1236,6 +1527,7 @@
         });
       });
 
+      // ÚLTIMO AUDIO REPRODUCIDO
       const checkLastPlayed = () => {
         try {
           const lastIndex = localStorage.getItem(LAST_AUDIO_KEY);
@@ -1250,18 +1542,119 @@
         } catch {}
       };
 
+      // NOVEDADES / ACTUALIZACIONES
+      try {
+        const previouslySeenId = localStorage.getItem(SEEN_RELEASE_KEY);
+        const latestReleaseId = releaseHistory[releaseHistory.length - 1].id;
+
+        if (!previouslySeenId) {
+          localStorage.setItem(SEEN_RELEASE_KEY, latestReleaseId);
+          releaseNotice.classList.add("hidden");
+        } else {
+          const seenIndex = releaseHistory.findIndex(
+            (r) => r.id === previouslySeenId,
+          );
+          const pendingReleases =
+            seenIndex < 0 ? [] : releaseHistory.slice(seenIndex + 1);
+
+          if (pendingReleases.length > 0) {
+            pendingReleases.forEach((release) => {
+              const group = document.createElement("div");
+              group.className = "release-group";
+
+              const date = document.createElement("h3");
+              date.textContent = release.date;
+              group.appendChild(date);
+
+              release.audios.forEach(([title, credit]) => {
+                const audio = document.createElement("div");
+                audio.className = "release-audio";
+                audio.innerHTML = `<span>${title}</span><span class="release-audio-credit">${credit}</span>`;
+                group.appendChild(audio);
+              });
+
+              releaseList.appendChild(group);
+            });
+            releaseNotice.classList.remove("hidden");
+          } else {
+            releaseNotice.classList.add("hidden");
+          }
+        }
+      } catch {
+        releaseNotice.classList.add("hidden");
+      }
+
+      document
+        .getElementById("release-dismiss")
+        .addEventListener("click", () => {
+          try {
+            const latestReleaseId =
+              releaseHistory[releaseHistory.length - 1].id;
+            localStorage.setItem(SEEN_RELEASE_KEY, latestReleaseId);
+          } catch {}
+          releaseNotice.classList.add("hidden");
+        });
+
+      // MODAL BIOGRAFÍAS MAESTROS
+      const modal = document.getElementById("teacher-modal");
+      const modalTitle = document.getElementById("modal-title");
+      const modalSubtitle = document.getElementById("modal-subtitle");
+      const modalBody = document.getElementById("modal-body");
+      const modalClose = document.getElementById("modal-close");
+
+      const openTeacherBio = (teacherKey) => {
+        const bio = teacherBios[teacherKey];
+        if (!bio) return;
+        modalTitle.textContent = bio.title;
+        modalSubtitle.textContent = bio.subtitle;
+        modalBody.innerHTML = bio.body;
+        modal.classList.remove("hidden");
+        modal.setAttribute("aria-hidden", "false");
+      };
+
+      document.querySelectorAll(".photo-slot").forEach((slot) => {
+        slot.addEventListener("click", () =>
+          openTeacherBio(slot.getAttribute("data-teacher")),
+        );
+      });
+
+      const closeModal = () => {
+        modal.classList.add("hidden");
+        modal.setAttribute("aria-hidden", "true");
+      };
+
+      modalClose.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // NAVEGACIÓN Y VISTAS
+      const updateBackToTopVisibility = () => {
+        const preparationVisible = !preparation.classList.contains("hidden");
+        const libraryVisible = !library.classList.contains("hidden");
+        const threshold = preparationVisible ? 240 : 400;
+        const shouldShow =
+          (preparationVisible || libraryVisible) && window.scrollY >= threshold;
+
+        backToTopButton.classList.toggle("hidden", !shouldShow);
+      };
+
       const showPreparation = () => {
         cover.classList.add("hidden");
         library.classList.add("hidden");
         preparation.classList.remove("hidden");
         window.scrollTo(0, 0);
+        updateBackToTopVisibility();
       };
+
       const showLibrary = () => {
         cover.classList.add("hidden");
         preparation.classList.add("hidden");
         library.classList.remove("hidden");
         window.scrollTo(0, 0);
+        updateBackToTopVisibility();
       };
+
       const showCover = () => {
         audioPlayer.pause();
         playerView.classList.add("hidden");
@@ -1270,19 +1663,14 @@
         cover.classList.remove("hidden");
         checkLastPlayed();
         window.scrollTo(0, 0);
+        updateBackToTopVisibility();
       };
 
-      // FUNCIÓN DE REPRODUCCIÓN REPARADA Y RESISTENTE A ERRORES DE RUTAS
+      // REPRODUCTOR
       const playPractice = (practice, practiceIndex) => {
         currentPracticeIndex = practiceIndex;
 
-        // Limpia la ruta para evitar errores con espacios y caracteres especiales
-        const rawPath = practice.file;
-        const encodedPath = rawPath
-          .split("/")
-          .map((part) => encodeURIComponent(part))
-          .join("/");
-
+        const encodedPath = encodeURI(practice.file);
         audioPlayer.src = encodedPath;
         audioPlayer.playbackRate = parseFloat(speedSelect.value || 1.0);
         playerTitle.textContent = practice.title;
@@ -1299,9 +1687,9 @@
             playerStatus.textContent = "Reproduciendo audio";
           })
           .catch((err) => {
-            console.error("Error al reproducir el archivo:", encodedPath, err);
+            console.error("Error al reproducir audio:", encodedPath, err);
             playerStatus.textContent =
-              "Error al cargar. Verifica el archivo en /audio.";
+              "Error al reproducir. Revisa la ruta en /audio.";
           });
       };
 
@@ -1309,6 +1697,7 @@
         audioPlayer.playbackRate = parseFloat(e.target.value);
       });
 
+      // RENDERIZADO DE LA BIBLIOTECA
       const renderPractices = () => {
         practiceGrid.innerHTML = "";
         const favs = getFavorites();
@@ -1321,11 +1710,12 @@
             return creditUpper.includes("SAMAEL");
           if (activeAuthorFilter === "lakhsmi")
             return creditUpper.includes("LAKHSMI");
-          if (activeAuthorFilter === "otros")
+          if (activeAuthorFilter === "otros") {
             return (
               !creditUpper.includes("SAMAEL") &&
               !creditUpper.includes("LAKHSMI")
             );
+          }
           return true;
         });
 
@@ -1341,14 +1731,14 @@
             <div>
               <div class="card-top">
                 <h3>${practice.title}</h3>
-                <button class="fav-btn ${isFav ? "is-fav" : ""}" type="button">★</button>
+                <button class="fav-btn ${isFav ? "is-fav" : ""}" type="button" aria-label="Favorito">★</button>
               </div>
               <p>No busques fuera, lo que dentro de ti se encuentra.</p>
               <p class="practice-credit">${practice.credit}</p>
             </div>
             <div class="card-actions">
               <button class="listen-button" type="button">Escuchar ▶</button>
-              <a class="download-button" href="${encodeURI(practice.file)}" download="${practice.download}">↓</a>
+              <a class="download-button" href="${encodeURI(practice.file)}" download="${practice.download}" aria-label="Descargar ${practice.title}" title="Descargar audio">↓</a>
             </div>`;
 
           card.querySelector(".fav-btn").addEventListener("click", (e) => {
@@ -1373,6 +1763,7 @@
         });
       });
 
+      // EVENTOS DE BOTONES
       document
         .getElementById("direct-audio-button")
         .addEventListener("click", showLibrary);
@@ -1388,18 +1779,71 @@
       document
         .getElementById("home-button")
         .addEventListener("click", showCover);
+
+      document.querySelectorAll(".brand").forEach((brandLink) => {
+        brandLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          showCover();
+        });
+      });
+
       document.getElementById("close-player").addEventListener("click", () => {
         audioPlayer.pause();
         playerView.classList.add("hidden");
       });
 
+      audioPlayer.addEventListener("play", () => {
+        playerStatus.textContent = "Reproduciendo audio";
+      });
+      audioPlayer.addEventListener("pause", () => {
+        playerStatus.textContent = "Audio en pausa";
+      });
       audioPlayer.addEventListener("ended", () => {
         const nextIndex = currentPracticeIndex + 1;
-        if (practices[nextIndex]) playPractice(practices[nextIndex], nextIndex);
+        if (practices[nextIndex]) {
+          playPractice(practices[nextIndex], nextIndex);
+        } else {
+          playerStatus.textContent = "Has completado todas las prácticas";
+        }
       });
 
+      window.addEventListener("scroll", updateBackToTopVisibility);
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // INICIALIZACIÓN
       checkLastPlayed();
       renderPractices();
+
+      // SERVICE WORKER PARA MODO OFFLINE (PWA)
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.addEventListener("message", (event) => {
+          if (event.data?.type !== "AUDIO_CACHE_PROGRESS") return;
+
+          const { completed, failed, total, done } = event.data;
+          const offlineStatus = document.getElementById("offline-status");
+          if (!done) {
+            offlineStatus.textContent = `Preparando audios para escuchar sin conexión: ${completed} de ${total}.`;
+          } else if (failed) {
+            offlineStatus.textContent = `${total - failed} de ${total} audios disponibles sin conexión; conecta de nuevo para reintentar los restantes.`;
+          } else {
+            offlineStatus.textContent = "Biblioteca disponible sin conexión.";
+          }
+        });
+
+        navigator.serviceWorker
+          .register("sw.js")
+          .then(async () => {
+            const registration = await navigator.serviceWorker.ready;
+            registration.active?.postMessage({ type: "CACHE_AUDIO_LIBRARY" });
+          })
+          .catch((error) => {
+            console.error("No se pudo activar el modo sin conexión:", error);
+            document.getElementById("offline-status").textContent =
+              "No se pudo preparar el modo sin conexión.";
+          });
+      }
     </script>
   </body>
 </html>
