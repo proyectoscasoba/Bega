@@ -1,7 +1,7 @@
 {
   "name": "Prácticas Esotéricas Gnósticas",
-  "short_name": "Prácticas Gnósticas",
-  "start_url": "./",
+  "short_name": "Bega",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#f4f0e7",
   "theme_color": "#183b3a",
