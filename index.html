@@ -844,6 +844,13 @@
           <!-- ACCIONES DE PORTADA -->
           <div class="cover-actions">
             <button
+              id="install-pwa-button"
+              class="primary-button hidden"
+              type="button"
+            >
+              📲 Instalar Aplicación
+            </button>
+            <button
               id="direct-audio-button"
               class="primary-button"
               type="button"
@@ -1140,7 +1147,7 @@
     </div>
 
     <script>
-      // MATRIZ COMPLETA DE PRÁCTICAS Y AUDIOS (RUTAS EN MINÚSCULAS PURAS)
+      // MATRIZ COMPLETA DE PRÁCTICAS Y AUDIOS
       const practices = [
         {
           title: "Asistencia de la Mónada Divina",
@@ -1678,12 +1685,12 @@
         updateBackToTopVisibility();
       };
 
-      // REPRODUCTOR
+      // REPRODUCTOR CORREGIDO
       const playPractice = (practice, practiceIndex) => {
         currentPracticeIndex = practiceIndex;
 
-        const encodedPath = encodeURI(practice.file);
-        audioPlayer.src = encodedPath;
+        // Se usa la ruta directa para evitar fallos de codificación parcial
+        audioPlayer.src = practice.file;
         audioPlayer.playbackRate = parseFloat(speedSelect.value || 1.0);
         playerTitle.textContent = practice.title;
         playerStatus.textContent = "Cargando audio...";
@@ -1699,7 +1706,7 @@
             playerStatus.textContent = "Reproduciendo audio";
           })
           .catch((err) => {
-            console.error("Error al reproducir audio:", encodedPath, err);
+            console.error("Error al reproducir audio:", practice.file, err);
             playerStatus.textContent =
               "Error al reproducir. Revisa la ruta en /audio.";
           });
@@ -1750,7 +1757,7 @@
             </div>
             <div class="card-actions">
               <button class="listen-button" type="button">Escuchar ▶</button>
-              <a class="download-button" href="${encodeURI(practice.file)}" download="${practice.download}" aria-label="Descargar ${practice.title}" title="Descargar audio">↓</a>
+              <a class="download-button" href="${practice.file}" download="${practice.download}" aria-label="Descargar ${practice.title}" title="Descargar audio">↓</a>
             </div>`;
 
           card.querySelector(".fav-btn").addEventListener("click", (e) => {
@@ -1822,6 +1829,37 @@
       window.addEventListener("scroll", updateBackToTopVisibility);
       backToTopButton.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // INSTALACIÓN PWA
+      let deferredPrompt;
+      const installButton = document.getElementById("install-pwa-button");
+
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (installButton) {
+          installButton.classList.remove("hidden");
+        }
+      });
+
+      if (installButton) {
+        installButton.addEventListener("click", async () => {
+          if (!deferredPrompt) return;
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          if (outcome === "accepted") {
+            console.log("El usuario instaló la PWA");
+          }
+          deferredPrompt = null;
+          installButton.classList.add("hidden");
+        });
+      }
+
+      window.addEventListener("appinstalled", () => {
+        if (installButton) {
+          installButton.classList.add("hidden");
+        }
       });
 
       // INICIALIZACIÓN
