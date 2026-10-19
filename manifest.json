@@ -1,10 +1,24 @@
 {
   "name": "Prácticas Esotéricas Gnósticas",
   "short_name": "Bega",
+  "description": "Audios esotéricos gnósticos para la interiorización y la meditación.",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#f4f0e7",
   "theme_color": "#183b3a",
   "lang": "es",
-  "icons": []
+  "icons": [
+{
+      "src": "images/logos.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/logos.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+]
 }
