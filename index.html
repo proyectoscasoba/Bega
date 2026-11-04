@@ -251,6 +251,20 @@
       .release-dismiss:hover {
         background: rgba(251, 250, 246, 0.12);
       }
+      .badge-new {
+        display: inline-block;
+        background: var(--saffron);
+        color: #1b302d;
+        font:
+          bold 0.68rem/1 Arial,
+          sans-serif;
+        padding: 3px 7px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
 
       /* BOTONES */
       .primary-button,
@@ -834,8 +848,10 @@
             aria-label="Nuevas actualizaciones"
             aria-live="polite"
           >
-            <p><strong>Nuevas Actualizaciones:</strong></p>
-            <div id="release-updates" class="release-updates"></div>
+            <p>
+              ✨ <strong>¡Biblioteca Actualizada!</strong> Se han incorporado
+              nuevas prácticas y audios recientes para tu estudio y meditación.
+            </p>
             <button id="release-dismiss" class="release-dismiss" type="button">
               Entendido
             </button>
@@ -1406,18 +1422,21 @@
           credit: "Eleuterio Martínez.",
           file: "audio/los tres principios- eleuterio martinez-.mp3",
           download: "los tres principios- eleuterio martinez-.mp3",
+          isNew: true,
         },
         {
           title: "El Trabajo Interior",
           credit: "Juan Capasso Pinto.",
           file: "audio/el trabajo interior-juan capasso-.mp3",
           download: "el trabajo interior-juan capasso-.mp3",
+          isNew: true,
         },
         {
           title: "La Liturgia",
           credit: "Moisés Márquez.",
           file: "audio/la liturgia-moises marquez-.mp3",
           download: "la liturgia-moises marquez-.mp3",
+          isNew: true,
         },
       ];
 
@@ -1579,43 +1598,15 @@
         } catch {}
       };
 
-      // NOVEDADES / ACTUALIZACIONES
+      // NOVEDADES / ACTUALIZACIONES SIMPLIFICADAS
       try {
         const previouslySeenId = localStorage.getItem(SEEN_RELEASE_KEY);
-        const latestReleaseId = releaseHistory[releaseHistory.length - 1].id;
+        const latestReleaseId = "2026-10-15-nuevos-audios"; // Puedes ponerle un identificador actual
 
-        if (!previouslySeenId) {
-          localStorage.setItem(SEEN_RELEASE_KEY, latestReleaseId);
-          releaseNotice.classList.add("hidden");
+        if (!previouslySeenId || previouslySeenId !== latestReleaseId) {
+          releaseNotice.classList.remove("hidden");
         } else {
-          const seenIndex = releaseHistory.findIndex(
-            (r) => r.id === previouslySeenId,
-          );
-          const pendingReleases =
-            seenIndex < 0 ? [] : releaseHistory.slice(seenIndex + 1);
-
-          if (pendingReleases.length > 0) {
-            pendingReleases.forEach((release) => {
-              const group = document.createElement("div");
-              group.className = "release-group";
-
-              const date = document.createElement("h3");
-              date.textContent = release.date;
-              group.appendChild(date);
-
-              release.audios.forEach(([title, credit]) => {
-                const audio = document.createElement("div");
-                audio.className = "release-audio";
-                audio.innerHTML = `<span>${title}</span><span class="release-audio-credit">${credit}</span>`;
-                group.appendChild(audio);
-              });
-
-              releaseList.appendChild(group);
-            });
-            releaseNotice.classList.remove("hidden");
-          } else {
-            releaseNotice.classList.add("hidden");
-          }
+          releaseNotice.classList.add("hidden");
         }
       } catch {
         releaseNotice.classList.add("hidden");
@@ -1625,8 +1616,7 @@
         .getElementById("release-dismiss")
         .addEventListener("click", () => {
           try {
-            const latestReleaseId =
-              releaseHistory[releaseHistory.length - 1].id;
+            const latestReleaseId = "2026-10-15-nuevos-audios";
             localStorage.setItem(SEEN_RELEASE_KEY, latestReleaseId);
           } catch {}
           releaseNotice.classList.add("hidden");
@@ -1761,13 +1751,19 @@
             (p) => p.title === practice.title,
           );
           const isFav = favs.includes(practice.title);
+
+          // AQUÍ EVALUAMOS SI ES NUEVO
+          const newBadgeHtml = practice.isNew
+            ? `<span class="badge-new">Nuevo</span>`
+            : "";
+
           const card = document.createElement("article");
           card.className = "practice-card";
 
           card.innerHTML = `
             <div>
               <div class="card-top">
-                <h3>${practice.title}</h3>
+                <h3>${practice.title} ${newBadgeHtml}</h3>
                 <button class="fav-btn ${isFav ? "is-fav" : ""}" type="button" aria-label="Favorito">★</button>
               </div>
               <p>No busques fuera, lo que dentro de ti se encuentra.</p>
@@ -1777,6 +1773,7 @@
               <button class="listen-button" type="button">Escuchar ▶</button>
               <a class="download-button" href="${practice.file}" download="${practice.download}" aria-label="Descargar ${practice.title}" title="Descargar audio">↓</a>
             </div>`;
+          // ... resto del código de eventos ...
 
           card.querySelector(".fav-btn").addEventListener("click", (e) => {
             e.stopPropagation();
