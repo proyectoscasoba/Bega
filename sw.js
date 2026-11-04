@@ -11,6 +11,10 @@ const APP_SHELL = [
 ];
 
 // Nombres exactos en minúsculas coincidiendo con tu index.html
+const CACHE_NAME = "practicas-gnosticas-v24";
+
+// ... (mantén el APP_SHELL igual) ...
+
 const AUDIO_ASSETS = [
   "audio/asistencia de la monada divina.mp3",
   "audio/cambio de pareja.mp3",
@@ -53,7 +57,11 @@ const AUDIO_ASSETS = [
   "audio/talisman esoterico.mp3",
   "audio/trabajo especial con el cristo lucifer.mp3",
   "audio/trascender la recurrencia.mp3",
-  "audio/vencer al diablo.mp3"
+  "audio/vencer al diablo.mp3",
+  // --- NUEVOS AUDIOS ---
+  "audio/los tres principios- eleuterio martinez-.mp3",
+  "audio/el trabajo interior-juan capasso-.mp3",
+  "audio/la liturgia-moises marquez-.mp3"
 ];
 
 const CACHEABLE_EXTERNAL_ORIGINS = [
